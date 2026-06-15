@@ -3,6 +3,7 @@ import { getCommissionById } from "@/features/commissions/actions";
 import { isCommissionDraft } from "@/features/commissions/draft-metadata";
 import { RingConfigurator } from "@/features/builder/components/RingConfigurator";
 import { Container, PageHeader, Section } from "@/components/layout/section";
+import { CreateAtmosphereBanner } from "@/components/editorial/CreateAtmosphereBanner";
 
 interface CreatePageProps {
   searchParams: Promise<{ draft?: string; restore?: string }>;
@@ -24,11 +25,12 @@ export default async function CreatePage({ searchParams }: CreatePageProps) {
     <Section className="py-12 md:py-16">
       <Container size="wide">
         <PageHeader
-          className="mb-8 md:mb-10"
+          className="mb-6 md:mb-8"
           eyebrow="Atelier"
           title="Design Your Ring"
           description="Configure your commission in real time. Save drafts anytime or begin your private commission when ready."
         />
+        <CreateAtmosphereBanner />
         <RingConfigurator
           isAuthenticated={Boolean(user)}
           userEmail={user?.email ?? null}

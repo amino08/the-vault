@@ -147,6 +147,288 @@
     border: 1px solid rgb(27 61 50 / 0.1);
     box-shadow: 0 1px 3px rgb(26 46 40 / 0.06), 0 8px 32px rgb(26 46 40 / 0.04);
   }
+
+  /* —— Editorial imagery & layout —— */
+  .editorial-image-placeholder {
+    background-color: var(--vault-warm);
+  }
+
+  .editorial-ph-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 70% at 50% 40%,
+      transparent 30%,
+      rgb(15 40 34 / 0.35) 100%
+    );
+  }
+
+  .editorial-ph-shimmer {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    background: linear-gradient(
+      135deg,
+      transparent 40%,
+      rgb(184 152 90 / 0.12) 50%,
+      transparent 60%
+    );
+  }
+
+  .editorial-ph-hero-presentation {
+    background: linear-gradient(155deg, #2a5246 0%, #1b3d32 45%, #0f2822 100%);
+  }
+
+  .editorial-ph-hero-craftsmanship {
+    background: linear-gradient(160deg, #3d3528 0%, #252922 50%, #1a1d1b 100%);
+  }
+
+  .editorial-ph-process-consultation {
+    background: linear-gradient(145deg, var(--vault-ivory) 0%, #e8e0d4 50%, #d4c9b8 100%);
+  }
+
+  .editorial-ph-process-design {
+    background: linear-gradient(160deg, #f3ede3 0%, #e5ddd0 40%, #c9b896 100%);
+  }
+
+  .editorial-ph-process-cad {
+    background: linear-gradient(165deg, #2f3530 0%, #252922 60%, #1b3d32 100%);
+  }
+
+  .editorial-ph-process-craftsmanship {
+    background: linear-gradient(150deg, #3d3528 0%, #2a2520 50%, #1a1d1b 100%);
+  }
+
+  .editorial-ph-process-delivery {
+    background: linear-gradient(145deg, #1b3d32 0%, #0f2822 60%, #1a1d1b 100%);
+  }
+
+  .editorial-ph-create-atelier {
+    background: linear-gradient(90deg, #1a1d1b 0%, #252922 40%, #1b3d32 100%);
+  }
+
+  .editorial-ph-collection-engagement {
+    background: linear-gradient(160deg, #e8e4da 0%, #d4bc7a 40%, #b8985a 100%);
+  }
+
+  .editorial-ph-collection-anniversary {
+    background: linear-gradient(155deg, #f7f4ee 0%, #d4bc7a 50%, #9a7f4a 100%);
+  }
+
+  .editorial-ph-collection-legacy {
+    background: linear-gradient(150deg, #2a5246 0%, #1b3d32 50%, #0f2822 100%);
+  }
+
+  .editorial-ph-collection-signet {
+    background: linear-gradient(165deg, #3d3528 0%, #252922 100%);
+  }
+
+  .editorial-ph-collection-bespoke {
+    background: linear-gradient(145deg, #1b3d32 0%, #252922 50%, #2a5246 100%);
+  }
+
+  .editorial-ph-milestone-engagement {
+    background: linear-gradient(150deg, #fffdf9 0%, #f3ede3 50%, #d4bc7a 100%);
+  }
+
+  .editorial-ph-milestone-legacy {
+    background: linear-gradient(155deg, #f3ede3 0%, #e8e0d4 50%, #1b3d32 100%);
+  }
+
+  .editorial-ph-milestone-achievement {
+    background: linear-gradient(160deg, #252922 0%, #1b3d32 50%, #b8985a 100%);
+  }
+
+  .editorial-hero-frame {
+    position: relative;
+  }
+
+  .editorial-hero-frame > .relative:first-child {
+    border: 1px solid rgb(27 61 50 / 0.12);
+    box-shadow: 0 24px 64px -32px rgb(26 46 40 / 0.25);
+  }
+
+  .editorial-hero-accent {
+    position: absolute;
+    bottom: -1.5rem;
+    left: -1.5rem;
+    z-index: 10;
+    width: 8rem;
+    height: 8rem;
+    border: 1px solid rgb(184 152 90 / 0.35);
+    box-shadow: 0 12px 40px -12px rgb(0 0 0 / 0.35);
+  }
+
+  @media (min-width: 768px) {
+    .editorial-hero-accent {
+      width: 10rem;
+      height: 10rem;
+      bottom: -2rem;
+      left: -2rem;
+    }
+  }
+
+  .editorial-process-frame {
+    position: relative;
+  }
+
+  .editorial-process-frame > .relative {
+    border: 1px solid rgb(27 61 50 / 0.1);
+    box-shadow: 0 16px 48px -24px rgb(26 46 40 / 0.2);
+  }
+
+  .editorial-process-step {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+    font-family: var(--font-playfair), Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1;
+    color: rgb(255 253 249 / 0.85);
+    text-shadow: 0 2px 12px rgb(0 0 0 / 0.4);
+  }
+
+  .editorial-create-banner {
+    position: relative;
+    overflow: hidden;
+    min-height: 7rem;
+    border: 1px solid rgb(27 61 50 / 0.15);
+    border-radius: 0.125rem;
+  }
+
+  .editorial-create-banner-copy {
+    position: relative;
+    z-index: 10;
+    padding: 1.5rem 1.75rem;
+    background: linear-gradient(
+      90deg,
+      rgb(26 29 27 / 0.92) 0%,
+      rgb(26 29 27 / 0.75) 55%,
+      transparent 100%
+    );
+  }
+
+  @media (min-width: 768px) {
+    .editorial-create-banner {
+      min-height: 8.5rem;
+    }
+
+    .editorial-create-banner-copy {
+      padding: 2rem 2.5rem;
+    }
+  }
+
+  .editorial-collection-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .editorial-collection-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .editorial-collection-image > .relative {
+    transition: transform 0.7s ease;
+  }
+
+  .editorial-collection-card:hover .editorial-collection-image > .relative {
+    transform: scale(1.03);
+  }
+
+  .editorial-collection-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(26 46 40 / 0.15), transparent 50%);
+    pointer-events: none;
+  }
+
+  .editorial-collection-meta {
+    padding-top: 1.25rem;
+  }
+
+  .editorial-milestone-card .relative {
+    border: 1px solid rgb(27 61 50 / 0.08);
+    box-shadow: 0 8px 32px -16px rgb(26 46 40 / 0.12);
+  }
+
+  /* —— Hero configurator showroom —— */
+  .hero-showroom {
+    background-color: var(--vault-ivory);
+    border: 1px solid rgb(27 61 50 / 0.12);
+    box-shadow: 0 20px 56px -28px rgb(26 46 40 / 0.22);
+    padding: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-showroom {
+      padding: 1.25rem;
+    }
+  }
+
+  .hero-showroom-header {
+    margin-bottom: 0.875rem;
+  }
+
+  .hero-showroom-stage {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    min-height: 17.5rem;
+    overflow: hidden;
+    border: 1px solid rgb(184 152 90 / 0.15);
+    box-shadow: inset 0 0 0 1px rgb(184 152 90 / 0.06);
+  }
+
+  @media (min-width: 768px) {
+    .hero-showroom-stage {
+      min-height: 22.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-showroom-stage {
+      min-height: 26rem;
+    }
+  }
+
+  .hero-showroom-live-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 20;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--vault-gold-light);
+    background: rgb(26 29 27 / 0.72);
+    border: 1px solid rgb(184 152 90 / 0.25);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-showroom-cues {
+    display: grid;
+    gap: 0.875rem;
+    padding-top: 1rem;
+  }
+
+  .hero-showroom-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--vault-forest);
+    transition: color 0.2s ease;
+  }
+
+  .hero-showroom-link:hover {
+    color: var(--vault-gold);
+  }
 }
 
 @layer utilities {

@@ -1,33 +1,48 @@
 import { Container, PageHeader, Section } from "@/components/layout/section";
+import { VaultCollectionGrid } from "@/components/editorial/VaultCollection";
+import { vaultCollection } from "@/content/editorial";
 
-const placeholderCreations = [
-  { title: "Legacy Signet", story: "Family crest reimagined in 18k gold" },
-  { title: "Transformation Pendant", story: "Weight loss journey — 100 lb milestone" },
-  { title: "Anniversary Band", story: "Twenty years, one continuous line of diamonds" },
-];
+const categories = [
+  "Engagement",
+  "Anniversary",
+  "Legacy",
+  "Signet",
+  "Bespoke Creations",
+] as const;
 
 export default function GalleryPage() {
   return (
-    <Section>
-      <Container>
-        <PageHeader
-          eyebrow="Gallery"
-          title="Past Creations"
-          description="A curated selection of commissioned works. Full gallery launches in Phase 3."
-        />
-        <div className="grid gap-8 md:grid-cols-3">
-          {placeholderCreations.map((item) => (
-            <article
-              key={item.title}
-              className="group surface-panel flex aspect-[3/4] flex-col justify-end rounded-sm p-8"
-            >
-              <div className="mb-auto aspect-square w-full rounded-sm bg-vault-warm" />
-              <h3 className="mt-6 font-serif text-xl text-vault-ink">{item.title}</h3>
-              <p className="mt-2 text-sm text-vault-muted">{item.story}</p>
-            </article>
-          ))}
-        </div>
-      </Container>
-    </Section>
+    <>
+      <Section className="pb-12 md:pb-16">
+        <Container>
+          <PageHeader
+            eyebrow="The Vault Collection"
+            title="Commissions that carry stories"
+            description="A curated selection of completed work across engagement, legacy, signet, and bespoke creations. Full photography launches with each commission reveal."
+          />
+          <p className="max-w-2xl body-editorial">
+            These pieces represent the emotional range of our studio — milestones, lineage, and
+            transformations made tangible. Each began as a private conversation, not a catalog
+            selection.
+          </p>
+        </Container>
+      </Section>
+
+      <Section className="brand-section-alt pb-24 pt-4 md:pb-32">
+        <Container>
+          <div className="mb-12 flex flex-wrap gap-3 md:mb-16">
+            {categories.map((category) => (
+              <span
+                key={category}
+                className="border border-vault-forest/15 bg-vault-ivory px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-vault-muted"
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+          <VaultCollectionGrid pieces={vaultCollection} />
+        </Container>
+      </Section>
+    </>
   );
 }

@@ -2,99 +2,40 @@ import Link from "next/link";
 import { routes } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 import { Container, PageHeader, Section } from "@/components/layout/section";
-
-const phases = [
-  {
-    eyebrow: "Consultation",
-    title: "Private consultation",
-    body: "We begin with a confidential conversation — the moment, the person, the symbolism. Not a sales call. A design intake shaped around what the piece needs to carry.",
-  },
-  {
-    eyebrow: "Direction",
-    title: "Design direction",
-    body: "We translate the meaning behind the piece before we design the form. Metal, proportion, stone character, and setting language are chosen to serve the story — not the other way around.",
-  },
-  {
-    eyebrow: "Concept",
-    title: "3D preview & concept review",
-    body: "You review a live configuration in our atelier — proportions, materials, and presence — before anything is cast or set. This is where the piece becomes visible.",
-    note: "The 3D preview is a design reference, not the final manufacturing CAD.",
-  },
-  {
-    eyebrow: "Refinement",
-    title: "Jeweler refinement",
-    body: "Our bench team adjusts geometry, setting height, prong profile, and wearability. Details that only matter when a piece is worn daily — or kept for generations.",
-  },
-  {
-    eyebrow: "Quote",
-    title: "Deposit & final quote",
-    body: "Your final quote is prepared after design review and stone sourcing. A design deposit secures your place in the studio and is applied toward the completed commission.",
-    note: "Estimated ranges in the configurator are a starting point — not a binding price.",
-  },
-  {
-    eyebrow: "Atelier",
-    title: "Production",
-    body: "Fabrication, stone setting, and quality control happen in sequence. You receive production updates through your private client portal when milestones are reached.",
-  },
-  {
-    eyebrow: "Delivery",
-    title: "Final delivery",
-    body: "The finished piece is presented with care documentation and commission records. Built to be worn, gifted, or handed down — with the story intact.",
-  },
-] as const;
-
-function EditorialRule() {
-  return (
-    <div className="py-2" aria-hidden>
-      <div className="brand-rule" />
-    </div>
-  );
-}
+import { processStages } from "@/content/editorial";
+import { editorialImages } from "@/content/editorial-images";
+import { EditorialImage } from "@/components/editorial/EditorialImage";
+import { ProcessTimeline } from "@/components/editorial/ProcessTimeline";
 
 export default function ProcessPage() {
   return (
     <>
-      <Section className="pb-12 md:pb-16">
-        <Container size="narrow">
-          <PageHeader
-            className="mb-8 md:mb-12"
-            eyebrow="The Commission Path"
-            title="From story to finished piece"
-            description="A private, seven-part journey — transparent at every stage, never rushed."
-          />
-          <p className="font-serif text-2xl font-light leading-snug text-vault-ink md:text-3xl">
-            Every commission begins with a story.
-          </p>
-          <p className="mt-6 max-w-xl body-editorial">
-            The Vault is not a checkout flow. It is a working relationship between you, our design
-            team, and the bench — with clear milestones and no surprises at the quote stage.
+      <Section className="pb-0 pt-4 md:pt-8">
+        <Container size="wide">
+          <div className="grid items-end gap-10 lg:grid-cols-2 lg:gap-16">
+            <PageHeader
+              className="mb-0 lg:pb-12"
+              eyebrow="The Commission Path"
+              title="From story to finished piece"
+              description="A private, five-stage journey — transparent at every milestone, never rushed."
+            />
+            <div className="editorial-process-frame pb-8 lg:pb-12">
+              <EditorialImage
+                asset={editorialImages.hero}
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                aspectClassName="aspect-[16/10] md:aspect-[5/3]"
+              />
+            </div>
+          </div>
+          <p className="max-w-2xl border-l-2 border-vault-gold/35 pl-5 font-serif text-xl font-light leading-snug text-vault-ink md:text-2xl">
+            Every commission begins with a story — not a SKU.
           </p>
         </Container>
       </Section>
 
-      <Section className="brand-section-alt py-16 md:py-24">
-        <Container>
-          <article>
-            {phases.map((phase, index) => (
-              <div key={phase.title}>
-                {index > 0 && <EditorialRule />}
-                <div className="grid gap-4 py-10 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-14 md:py-14">
-                  <p className="brand-eyebrow pt-1">{phase.eyebrow}</p>
-                  <div className="space-y-4">
-                    <h2 className="font-serif text-2xl font-light text-vault-ink md:text-[1.75rem]">
-                      {phase.title}
-                    </h2>
-                    <p className="max-w-2xl body-editorial md:text-base">{phase.body}</p>
-                    {"note" in phase && phase.note && (
-                      <p className="max-w-2xl border-l-2 border-vault-gold/40 pl-4 text-sm italic text-vault-muted-light">
-                        {phase.note}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </article>
+      <Section className="brand-section-alt py-20 md:py-28 lg:py-32">
+        <Container size="wide">
+          <ProcessTimeline stages={processStages} />
         </Container>
       </Section>
 
@@ -102,7 +43,7 @@ export default function ProcessPage() {
         <Container size="narrow" className="text-center">
           <p className="brand-eyebrow">Ready when you are</p>
           <p className="mt-4 font-serif text-2xl font-light text-vault-ink md:text-3xl">
-            The atelier is open to qualified commissions.
+            The atelier awaits your narrative.
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm text-vault-muted">
             Configure a ring in real time, save your draft, or begin a full inquiry when the story
@@ -113,7 +54,7 @@ export default function ProcessPage() {
               <Link href={routes.create}>Begin a Commission</Link>
             </Button>
             <Button variant="secondary" size="lg" asChild>
-              <Link href={routes.create}>Enter the Atelier</Link>
+              <Link href={routes.contact}>Speak With Us</Link>
             </Button>
           </div>
         </Container>
