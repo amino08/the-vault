@@ -2,6 +2,50 @@
 
 Production target: **https://vault.enter-aevum.com**
 
+GitHub repository: **https://github.com/amino08/the-vault** (branch: `main`)
+
+---
+
+## Deployment readiness report
+
+**Audit date:** 2026-06-13  
+**Verdict:** **Ready to import into Vercel** — no code or schema changes required.
+
+| Check | Status | Notes |
+|---|---|---|
+| `npm run typecheck` | Pass | No TypeScript errors |
+| `npm run build` | Pass | 27 routes compiled; Next.js 15.5.19 |
+| GitHub `main` pushed | Pass | Latest commit on remote |
+| App Router compatibility | Pass | All routes under `src/app/` |
+| 3D builder (`/create`) | Pass | `RingPreview` loaded via `dynamic(..., { ssr: false })` |
+| Supabase SSR / middleware | Pass | `@supabase/ssr` cookie pattern; Edge middleware ~90 kB |
+| Hardcoded localhost in app code | Pass | Only env fallbacks when `NEXT_PUBLIC_APP_URL` unset |
+| `vercel.json` required | No | Next.js preset is sufficient |
+
+### Non-blocking warnings (safe to deploy)
+
+- ESLint: unused vars in `render-engine.ts`, `checkout.ts` (future Stripe stub)
+- Supabase Edge Runtime advisory at build time (middleware uses `@supabase/supabase-js` via SSR package — works on Vercel)
+
+### Must configure in Vercel before go-live
+
+These are **dashboard / Supabase settings**, not code changes:
+
+1. Set all **required** environment variables (see §3).
+2. Set `NEXT_PUBLIC_APP_URL=https://vault.enter-aevum.com` (no trailing slash).
+3. Update **Supabase Auth** Site URL + Redirect URLs (see §4).
+4. Confirm Supabase migrations + `commission-files` storage bucket are applied (see §4).
+5. Add custom domain + Hostinger CNAME (see §5).
+
+### Optional for full production behavior
+
+| Variable | If missing |
+|---|---|
+| `VAULT_ADMIN_EMAILS` | Admin bootstrap skipped; `/admin` inaccessible |
+| `RESEND_API_KEY` | Inquiry emails skipped (logged, no crash) |
+| `NEXT_PUBLIC_AEVUM_CHECKOUT_URL` | Falls back to `https://aevumdigital.co` |
+| Stripe vars | Webhook route returns 400; native Stripe not used in checkout flow today |
+
 ---
 
 ## Pre-flight (run locally before every deploy)
@@ -15,19 +59,15 @@ Both must pass. Do **not** run `npm run build` while `npm run dev` is active —
 
 ---
 
-## 1. GitHub push
+## 1. GitHub
 
-The project must be a git repository connected to GitHub before Vercel import.
+Repository is live at:
 
-```bash
-cd the-vault
-git init
-git add .
-git commit -m "Prepare The Vault for Vercel production"
-git branch -M main
-git remote add origin https://github.com/YOUR_ORG/the-vault.git
-git push -u origin main
 ```
+https://github.com/amino08/the-vault
+```
+
+Branch: **`main`**
 
 > **Note:** `.env.local` is gitignored. Never commit secrets. Use Vercel Environment Variables instead.
 
@@ -36,7 +76,7 @@ git push -u origin main
 ## 2. Vercel import
 
 1. Sign in at [vercel.com](https://vercel.com) with GitHub.
-2. **Add New → Project** → import `the-vault` repository.
+2. **Add New → Project** → import **`amino08/the-vault`**.
 3. Framework preset: **Next.js** (auto-detected).
 4. Root directory: `.` (repo root).
 5. Build command: `npm run build` (default).
@@ -46,28 +86,34 @@ git push -u origin main
 
 No `vercel.json` is required for this project.
 
+After import, add environment variables **before** promoting to production traffic (§3), then redeploy if you add vars after the first build.
+
 ---
 
 ## 3. Environment variables (Vercel dashboard)
 
-Set these under **Project → Settings → Environment Variables** for **Production** (and Preview if you want staging).
+Set under **Project → Settings → Environment Variables** for **Production** (and Preview if you want staging).
 
-### Required — app will not function without these
+Copy names from `.env.example`. Values come from Supabase, Resend, and your domain — never from the repo.
 
-| Variable | Example / notes |
-|---|---|
-| `NEXT_PUBLIC_APP_URL` | `https://vault.enter-aevum.com` |
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://YOUR_PROJECT.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Settings → API → anon public |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Settings → API → service_role (**server only**, never expose to client) |
+### Required — app will not function correctly without these
+
+| Variable | Production value | Where to get it |
+|---|---|---|
+| `NEXT_PUBLIC_APP_URL` | `https://vault.enter-aevum.com` | Your production domain (no trailing slash) |
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://YOUR_PROJECT.supabase.co` | Supabase → Project Settings → API |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJ...` | Supabase → Settings → API → anon public |
+| `SUPABASE_SERVICE_ROLE_KEY` | `eyJ...` | Supabase → Settings → API → service_role (**server only**) |
+
+**Critical:** If `NEXT_PUBLIC_APP_URL` is missing in production, auth email links and site metadata fall back to `http://localhost:3000`. Always set this in Vercel Production.
 
 ### Strongly recommended — production behavior
 
 | Variable | Example / notes |
 |---|---|
 | `NEXT_PUBLIC_APP_NAME` | `The Vault by Enter Aevum` |
-| `NEXT_PUBLIC_AEVUM_CHECKOUT_URL` | `https://aevumdigital.co` |
-| `VAULT_ADMIN_EMAILS` | `you@enter-aevum.com,partner@enter-aevum.com` (comma-separated; bootstraps admin role) |
+| `NEXT_PUBLIC_AEVUM_CHECKOUT_URL` | `https://aevumdigital.co` (default if unset) |
+| `VAULT_ADMIN_EMAILS` | `you@enter-aevum.com,partner@enter-aevum.com` (comma-separated; bootstraps admin role on sign-in) |
 
 ### Optional — features degrade gracefully if unset
 
@@ -85,9 +131,21 @@ Set these under **Project → Settings → Environment Variables** for **Product
 |---|---|
 | `VERCEL_URL` | Deployment hostname; available at runtime |
 
+### Local validation script
+
+After filling `.env.local` locally:
+
+```bash
+node scripts/validate-supabase-env.mjs
+```
+
+Prints pass/fail without exposing secret values.
+
 ---
 
-## 4. Supabase Auth — production URLs
+## 4. Supabase configuration
+
+### Auth — production URLs
 
 In **Supabase Dashboard → Authentication → URL Configuration**:
 
@@ -103,15 +161,29 @@ http://localhost:3000/auth/callback
 http://localhost:3000/**
 ```
 
-The localhost entries keep local development working.
+Keep localhost entries for local development.
 
-**Email confirm redirect** uses:
+**Email confirm redirect** (sign-up) uses:
 
 ```
 {NEXT_PUBLIC_APP_URL}/auth/callback
 ```
 
 Ensure `NEXT_PUBLIC_APP_URL` matches production exactly (no trailing slash).
+
+**Auth callback route:** `/auth/callback` — exchanges OAuth/code for session, bootstraps user profile and admin role.
+
+### Database & storage (one-time, hosted Supabase)
+
+Apply before testing commissions in production:
+
+1. Run all SQL in `supabase/migrations/` (or `supabase db push` if linked).
+2. Run `supabase/storage.sql` in the SQL editor (storage policies).
+3. If snapshot uploads fail, run `supabase/migrations/20250615000001_builder_snapshot_storage.sql`.
+
+Required bucket: **`commission-files`** (private; PNG snapshots from `/create`).
+
+See also: `docs/HOSTED_SUPABASE_SETUP.md`.
 
 ---
 
@@ -137,25 +209,44 @@ For a **subdomain**, Vercel expects a **CNAME**:
 
 DNS propagation can take 5 minutes to 48 hours. Vercel shows **Valid Configuration** when ready.
 
-Optional: redirect `www.vault.enter-aevum.com` or apex `enter-aevum.com` separately if needed — only configure what you intend to serve.
+After DNS is valid, confirm `NEXT_PUBLIC_APP_URL` is `https://vault.enter-aevum.com` and **redeploy**.
 
 ---
 
-## 6. First production deploy checklist
+## 6. Deployment checklist
 
-- [ ] `npm run typecheck` passes locally
-- [ ] `npm run build` passes locally
-- [ ] Code pushed to GitHub `main`
-- [ ] Vercel project imported and first deploy triggered
-- [ ] All **required** env vars set in Vercel Production
-- [ ] `NEXT_PUBLIC_APP_URL=https://vault.enter-aevum.com`
-- [ ] Supabase Site URL + Redirect URLs updated
-- [ ] Custom domain added in Vercel
+### Pre-import (done)
+
+- [x] `npm run typecheck` passes locally
+- [x] `npm run build` passes locally
+- [x] Code pushed to GitHub `main` — https://github.com/amino08/the-vault/tree/main
+
+### Vercel import & first deploy
+
+- [ ] Import `amino08/the-vault` in Vercel (Next.js preset, Node 20.x)
+- [ ] Set all **required** env vars in Vercel **Production**
+- [ ] Set `NEXT_PUBLIC_APP_URL=https://vault.enter-aevum.com`
+- [ ] Set `VAULT_ADMIN_EMAILS` with owner/admin emails
+- [ ] Trigger deploy; confirm build succeeds on Vercel
+
+### Supabase & domain
+
+- [ ] Supabase Site URL + Redirect URLs updated (§4)
+- [ ] Migrations + storage policies applied on hosted Supabase
+- [ ] Custom domain `vault.enter-aevum.com` added in Vercel
 - [ ] CNAME `vault` → `cname.vercel-dns.com` in Hostinger
 - [ ] SSL certificate issued (automatic on Vercel)
-- [ ] Test: `/`, `/create`, `/account/login`, sign-up email flow
-- [ ] Test: commission submit → Aevum checkout redirect
-- [ ] Test: admin access with `VAULT_ADMIN_EMAILS` account
+- [ ] Redeploy after env/domain changes
+
+### Post-deploy smoke tests
+
+- [ ] `/` — homepage loads
+- [ ] `/create` — 3D configurator renders (WebGL client-side)
+- [ ] `/account/login` — sign-in works
+- [ ] Sign-up email confirm → `/auth/callback` → `/account`
+- [ ] Save Draft (authenticated) + Begin Commission → Aevum checkout redirect
+- [ ] Admin access with `VAULT_ADMIN_EMAILS` account → `/admin`
+- [ ] Optional: inquiry emails if `RESEND_API_KEY` set
 
 ---
 
@@ -179,17 +270,30 @@ Previous deployment becomes live immediately. Database/Supabase state is unchang
 
 ---
 
-## 9. Architecture notes (audit summary)
+## 9. Architecture notes
 
-| Area | Status |
-|---|---|
-| Next.js 15 App Router | Compatible |
-| Middleware (Supabase session) | Edge — known Supabase warning at build, works on Vercel |
-| 3D ring builder (`/create`) | Client-only via `dynamic(..., { ssr: false })` — no SSR Three.js |
-| Server Actions | Enabled; 10mb body limit for snapshot upload |
-| Secrets | Server keys (`SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_*`, `RESEND_*`) are not `NEXT_PUBLIC_*` |
-| Localhost | Only as fallback when `NEXT_PUBLIC_APP_URL` unset — must set in production |
-| `vercel.json` | Not required |
+| Area | Status | Detail |
+|---|---|---|
+| Next.js 15 App Router | Compatible | 27 routes; static + dynamic mix |
+| Middleware (Supabase session) | Edge | Refreshes session; protects `/account/*` and `/admin/*` |
+| 3D ring builder (`/create`) | Client-only | Single dynamic import: `RingConfigurator` → `RingPreview` with `ssr: false` |
+| Three.js on Vercel | Compatible | `transpilePackages: ["three", "@react-three/fiber", "@react-three/drei"]`; `reactStrictMode: false` for stable WebGL |
+| Server Actions | Enabled | 10 MB body limit for snapshot upload |
+| Supabase SSR | Standard pattern | `createServerClient` in middleware + server components; `@supabase/ssr` ^0.5.2 |
+| Secrets | Server-only | `SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_*`, `RESEND_*` are not `NEXT_PUBLIC_*` |
+| Localhost in code | Fallback only | `site.ts` and auth `emailRedirectTo` use `NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"` |
+| External URLs | Production-safe | Checkout defaults to `https://aevumdigital.co`; Instagram link is public |
+| `vercel.json` | Not required | Defaults sufficient |
+
+### Localhost audit (application source)
+
+| Location | localhost? | Production impact |
+|---|---|---|
+| `src/config/site.ts` | Fallback if env unset | Set `NEXT_PUBLIC_APP_URL` in Vercel |
+| `src/features/auth/actions.ts` | Fallback if env unset | Same — breaks email confirm links if unset |
+| `src/config/aevum-checkout.ts` | No | Uses `https://aevumdigital.co` default |
+| `src/app/auth/callback/route.ts` | No | Uses request `origin` (correct on Vercel) |
+| Docs / `.env.example` | Dev references only | Not deployed |
 
 ---
 
@@ -198,11 +302,14 @@ Previous deployment becomes live immediately. Database/Supabase state is unchang
 | Symptom | Fix |
 |---|---|
 | Auth redirect loop | Check Supabase redirect URLs and `NEXT_PUBLIC_APP_URL` |
+| Email links go to localhost | Set `NEXT_PUBLIC_APP_URL` in Vercel Production and redeploy |
 | “Invalid API key” | Verify Supabase URL/anon key in Vercel env |
 | Admin pages 403 | Add your email to `VAULT_ADMIN_EMAILS`, redeploy, sign in again |
+| Snapshot upload fails | Apply storage migration; check `commission-files` bucket policies |
 | Emails not sending | Set `RESEND_API_KEY`; verify domain in Resend |
 | Webpack runtime errors in dev | Run `npm run dev:clean` — stale `.next` cache |
-| Build fails on Vercel | Compare Node version; run `npm run build` locally first |
+| Build fails on Vercel | Set Node 20.x; run `npm run build` locally first |
+| 3D blank on `/create` | Usually client WebGL; check browser console; not a Vercel SSR issue |
 
 ---
 
