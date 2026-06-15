@@ -5,8 +5,8 @@ export default function AccountMessagesPage() {
   return (
     <AccountShell>
       <PageHeader title="Message Center" description="Communicate with your commission team." />
-      <div className="border border-white/5 bg-vault-charcoal p-10">
-        <p className="text-sm text-vault-pearl/60">
+      <div className="surface-panel rounded-sm p-10">
+        <p className="text-sm text-vault-muted">
           Threaded messaging arrives in Phase 2.
         </p>
       </div>

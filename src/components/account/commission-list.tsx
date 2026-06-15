@@ -20,7 +20,7 @@ export function CommissionList({ commissions, basePath = "/account/commissions" 
   if (commissions.length === 0) {
     return (
       <div className="brand-panel p-10 text-center">
-        <p className="text-vault-pearl/60">No commissions yet.</p>
+        <p className="text-vault-muted">No commissions yet.</p>
         <Link href="/create" className="mt-4 inline-block text-sm text-vault-gold hover:underline">
           Begin your first commission →
         </Link>
@@ -34,14 +34,14 @@ export function CommissionList({ commissions, basePath = "/account/commissions" 
         <li key={c.id}>
           <Link
             href={`${basePath}/${c.id}`}
-            className="flex flex-col gap-3 p-6 transition-colors hover:bg-vault-forest/10 md:flex-row md:items-center md:justify-between"
+            className="flex flex-col gap-3 p-6 transition-colors hover:bg-vault-warm md:flex-row md:items-center md:justify-between"
           >
             <div className="space-y-1">
               <p className="text-xs uppercase tracking-luxury text-vault-gold/80">
                 {c.reference_number}
               </p>
               <h3 className="font-serif text-xl">{c.title}</h3>
-              <p className="text-sm text-vault-pearl/50">
+              <p className="text-sm text-vault-muted">
                 {STORY_TYPE_LABELS[c.story_type as StoryType]} ·{" "}
                 {PIECE_TYPE_LABELS[c.piece_type as PieceType]} · {formatDate(c.created_at)}
               </p>

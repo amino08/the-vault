@@ -301,22 +301,23 @@ export function RingConfigurator({
         )}
 
         {draftMessage && (
-          <p className="rounded-sm border border-vault-gold/30 bg-vault-gold/10 px-4 py-3 text-sm text-vault-gold">
+          <p className="rounded-sm border border-vault-gold/30 bg-vault-warm px-4 py-3 text-sm text-vault-forest">
             {draftMessage}
           </p>
         )}
 
         {!isAuthenticated && (
-          <p className="rounded-sm border border-white/10 bg-vault-smoke/40 px-4 py-3 text-sm text-vault-pearl/65">
+          <p className="rounded-sm border border-vault-forest/10 bg-vault-warm px-4 py-3 text-sm text-vault-muted">
             Design freely. Sign in when you&apos;re ready to save your draft or begin your commission.
           </p>
         )}
 
+        <div className="atelier-stage rounded-md p-5 md:p-8 lg:p-10">
         <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[7fr_3fr] lg:items-start xl:gap-8">
           <div className="contents lg:block lg:space-y-2 lg:sticky lg:top-20">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Atelier Preview</p>
-              <p className="mt-0.5 font-serif text-lg text-vault-ivory">Live Configuration</p>
+              <p className="atelier-eyebrow">Atelier Preview</p>
+              <p className="mt-0.5 font-serif text-lg text-vault-cream-text">Live Configuration</p>
             </div>
             <div className="relative aspect-[4/3] w-full overflow-hidden border border-vault-gold/15 bg-[#070707] shadow-[0_24px_48px_-24px_rgba(0,0,0,0.9),inset_0_0_0_1px_rgba(201,169,98,0.06)] max-lg:sticky max-lg:top-20 max-lg:z-30 max-lg:max-h-[min(320px,75vw)] max-lg:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.95)] max-lg:backdrop-blur-sm lg:aspect-auto lg:min-h-[min(440px,48vh)] lg:max-h-[min(560px,58vh)]">
               <RingPreview ref={previewRef} config={builder} className="absolute inset-0 h-full w-full" />
@@ -327,11 +328,11 @@ export function RingConfigurator({
               </p>
               <Button
                 type="button"
-                variant="outline"
+                variant="atelierOutline"
                 size="sm"
                 disabled={capturingPreview}
                 onClick={handleSavePreview}
-                className="shrink-0 border-vault-gold/30 text-[10px] uppercase tracking-[0.2em]"
+                className="shrink-0 text-[10px] uppercase tracking-[0.2em]"
               >
                 {capturingPreview ? "Capturing..." : "Save Preview"}
               </Button>
@@ -419,11 +420,12 @@ export function RingConfigurator({
             />
           </div>
         </div>
+        </div>
 
-        <div className="space-y-6 brand-panel p-6 lg:p-8">
+        <div className="surface-panel space-y-6 rounded-md p-6 lg:p-8">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Commission Narrative</p>
-            <p className="mt-1 font-serif text-lg text-vault-ivory">Your Story</p>
+            <p className="brand-eyebrow">Commission Narrative</p>
+            <p className="mt-1 font-serif text-lg text-vault-ink">Your Story</p>
             <div className="mt-6 space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="title">Commission Title</Label>
@@ -432,14 +434,14 @@ export function RingConfigurator({
                   placeholder="e.g. Achievement Ring — 2026 Transformation"
                   {...register("title")}
                 />
-                {errors.title && <p className="text-xs text-red-400">{errors.title.message}</p>}
+                {errors.title && <p className="text-xs text-red-600">{errors.title.message}</p>}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="story_type">Story Type</Label>
                 <select
                   id="story_type"
-                  className="flex h-11 w-full rounded-sm border border-white/10 bg-vault-smoke px-4 text-sm"
+                  className="flex h-11 w-full rounded-sm border border-vault-forest/15 bg-vault-ivory px-4 text-sm text-vault-ink"
                   {...register("story_type")}
                 >
                   {STORY_TYPES.map((t) => (
@@ -455,12 +457,12 @@ export function RingConfigurator({
                 <textarea
                   id="story_narrative"
                   rows={4}
-                  className="flex w-full rounded-sm border border-white/10 bg-vault-smoke px-4 py-3 text-sm"
+                  className="flex w-full rounded-sm border border-vault-forest/15 bg-vault-ivory px-4 py-3 text-sm text-vault-ink placeholder:text-vault-muted-light"
                   placeholder="Share the meaning, milestone, or symbolism behind this ring..."
                   {...register("story_narrative")}
                 />
                 {errors.story_narrative && (
-                  <p className="text-xs text-red-400">{errors.story_narrative.message}</p>
+                  <p className="text-xs text-red-600">{errors.story_narrative.message}</p>
                 )}
               </div>
             </div>
@@ -469,7 +471,7 @@ export function RingConfigurator({
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <Button
               type="button"
-              variant="outline"
+              variant="secondary"
               size="lg"
               disabled={savingDraft}
               onClick={handleSaveDraft}
@@ -482,7 +484,7 @@ export function RingConfigurator({
             </Button>
           </div>
 
-          <p className="max-w-2xl text-[11px] leading-relaxed text-vault-pearl/45">
+          <p className="max-w-2xl text-[11px] leading-relaxed text-vault-muted-light">
             Your design will be reviewed by our jeweler. The deposit begins the private commission
             process and is applied toward your final quote.
           </p>

@@ -45,7 +45,7 @@ export default async function CommissionDetailPage({ params }: PageProps) {
     <AccountShell>
       <Link
         href={routes.account}
-        className="mb-8 inline-block text-sm text-vault-pearl/60 hover:text-vault-gold"
+        className="mb-8 inline-block text-sm text-vault-muted hover:text-vault-gold"
       >
         ← Back to commissions
       </Link>
@@ -55,18 +55,18 @@ export default async function CommissionDetailPage({ params }: PageProps) {
           {commission.reference_number}
         </p>
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-          <h1 className="font-serif text-3xl font-light md:text-4xl">{commission.title}</h1>
+          <h1 className="font-serif text-3xl font-light text-vault-ink md:text-4xl">{commission.title}</h1>
           <CommissionStatusBadge status={commission.status as CommissionStatus} isDraft={isDraft} />
         </div>
-        <p className="text-sm text-vault-pearl/60">
+        <p className="text-sm text-vault-muted">
           {STORY_TYPE_LABELS[commission.story_type as StoryType]} ·{" "}
           {PIECE_TYPE_LABELS[commission.piece_type as PieceType]}
         </p>
       </div>
 
       {isDraft && (
-        <div className="mb-8 flex flex-col gap-4 border border-vault-gold/25 bg-vault-gold/5 p-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-vault-pearl/75">
+        <div className="mb-8 flex flex-col gap-4 border border-vault-gold/25 bg-vault-warm p-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-vault-muted">
             This is a saved design draft — not yet submitted as a commission inquiry.
           </p>
           <Button asChild variant="outline">
@@ -76,9 +76,9 @@ export default async function CommissionDetailPage({ params }: PageProps) {
       )}
 
       {commission.story_narrative && (
-        <div className="mb-8 border border-white/5 bg-vault-charcoal p-8">
-          <p className="mb-3 text-xs uppercase tracking-luxury text-vault-gold">Your Story</p>
-          <p className="leading-relaxed text-vault-pearl/80">{commission.story_narrative}</p>
+        <div className="surface-panel mb-8 rounded-sm p-8">
+          <p className="mb-3 brand-eyebrow text-[10px]">Your Story</p>
+          <p className="leading-relaxed text-vault-muted">{commission.story_narrative}</p>
         </div>
       )}
 

@@ -46,7 +46,7 @@ export default async function AdminCommissionDetailPage({ params }: PageProps) {
     <AdminShell>
       <Link
         href={`${routes.admin}/commissions`}
-        className="mb-8 inline-block text-sm text-vault-pearl/60 hover:text-vault-gold"
+        className="mb-8 inline-block text-sm text-vault-muted hover:text-vault-gold"
       >
         ← Back to all commissions
       </Link>
@@ -73,9 +73,9 @@ export default async function AdminCommissionDetailPage({ params }: PageProps) {
       )}
 
       {commission.story_narrative && (
-        <div className="mb-8 border border-white/5 bg-vault-charcoal p-8">
-          <p className="mb-3 text-xs uppercase tracking-luxury text-vault-gold">Client Story</p>
-          <p className="leading-relaxed text-vault-pearl/80">{commission.story_narrative}</p>
+        <div className="surface-panel mb-8 rounded-sm p-8">
+          <p className="mb-3 brand-eyebrow text-[10px]">Client Story</p>
+          <p className="leading-relaxed text-vault-muted">{commission.story_narrative}</p>
         </div>
       )}
 

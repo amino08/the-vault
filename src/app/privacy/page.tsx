@@ -5,7 +5,7 @@ export default function PrivacyPage() {
     <Section>
       <Container size="narrow">
         <PageHeader eyebrow="Legal" title="Privacy Policy" />
-        <div className="space-y-4 text-sm text-vault-pearl/70">
+        <div className="space-y-4 text-sm text-vault-muted">
           <p>Privacy policy content will be finalized before production launch.</p>
         </div>
       </Container>

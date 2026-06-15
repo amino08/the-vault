@@ -54,18 +54,18 @@ function EditorialRule() {
 export default function ProcessPage() {
   return (
     <>
-      <Section className="pb-16 md:pb-20">
+      <Section className="pb-12 md:pb-16">
         <Container size="narrow">
           <PageHeader
-            className="mb-10 md:mb-14"
+            className="mb-8 md:mb-12"
             eyebrow="The Commission Path"
             title="From story to finished piece"
             description="A private, seven-part journey — transparent at every stage, never rushed."
           />
-          <p className="font-serif text-2xl font-light leading-snug text-vault-ivory md:text-3xl">
+          <p className="font-serif text-2xl font-light leading-snug text-vault-ink md:text-3xl">
             Every commission begins with a story.
           </p>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-vault-pearl/65">
+          <p className="mt-6 max-w-xl body-editorial">
             The Vault is not a checkout flow. It is a working relationship between you, our design
             team, and the bench — with clear milestones and no surprises at the quote stage.
           </p>
@@ -79,18 +79,14 @@ export default function ProcessPage() {
               <div key={phase.title}>
                 {index > 0 && <EditorialRule />}
                 <div className="grid gap-4 py-10 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-14 md:py-14">
-                  <p className="pt-1 text-[10px] uppercase tracking-[0.28em] text-vault-gold">
-                    {phase.eyebrow}
-                  </p>
+                  <p className="brand-eyebrow pt-1">{phase.eyebrow}</p>
                   <div className="space-y-4">
-                    <h2 className="font-serif text-2xl font-light text-vault-ivory md:text-[1.75rem]">
+                    <h2 className="font-serif text-2xl font-light text-vault-ink md:text-[1.75rem]">
                       {phase.title}
                     </h2>
-                    <p className="max-w-2xl text-sm leading-relaxed text-vault-pearl/70 md:text-base">
-                      {phase.body}
-                    </p>
+                    <p className="max-w-2xl body-editorial md:text-base">{phase.body}</p>
                     {"note" in phase && phase.note && (
-                      <p className="max-w-2xl border-l-2 border-vault-gold/35 pl-4 text-sm italic text-vault-pearl/50">
+                      <p className="max-w-2xl border-l-2 border-vault-gold/40 pl-4 text-sm italic text-vault-muted-light">
                         {phase.note}
                       </p>
                     )}
@@ -104,11 +100,11 @@ export default function ProcessPage() {
 
       <Section className="py-20 md:py-28">
         <Container size="narrow" className="text-center">
-          <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Ready when you are</p>
-          <p className="mt-4 font-serif text-2xl font-light text-vault-ivory md:text-3xl">
+          <p className="brand-eyebrow">Ready when you are</p>
+          <p className="mt-4 font-serif text-2xl font-light text-vault-ink md:text-3xl">
             The atelier is open to qualified commissions.
           </p>
-          <p className="mx-auto mt-4 max-w-md text-sm text-vault-pearl/55">
+          <p className="mx-auto mt-4 max-w-md text-sm text-vault-muted">
             Configure a ring in real time, save your draft, or begin a full inquiry when the story
             is clear.
           </p>
@@ -116,7 +112,7 @@ export default function ProcessPage() {
             <Button size="lg" asChild>
               <Link href={routes.create}>Begin a Commission</Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="secondary" size="lg" asChild>
               <Link href={routes.create}>Enter the Atelier</Link>
             </Button>
           </div>

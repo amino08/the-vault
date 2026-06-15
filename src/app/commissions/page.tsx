@@ -83,10 +83,10 @@ export default function CommissionsPage() {
             title="What we take on"
             description="Private work for clients who want one piece — made once — for a reason that matters."
           />
-          <p className="font-serif text-2xl font-light leading-snug text-vault-ivory md:text-3xl">
+          <p className="font-serif text-2xl font-light leading-snug text-vault-ink md:text-3xl">
             Every commission begins with a story.
           </p>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-vault-pearl/65">
+          <p className="mt-6 max-w-xl body-editorial">
             We translate the meaning behind the piece before we design the form. If you can name
             why it needs to exist, we can help you shape what it becomes.
           </p>
@@ -96,24 +96,21 @@ export default function CommissionsPage() {
       <Section className="brand-section-alt py-16 md:py-24">
         <Container>
           <div className="mb-12 max-w-2xl md:mb-16">
-            <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">By intention</p>
-            <h2 className="mt-3 font-serif text-3xl font-light text-vault-ivory md:text-4xl">
+            <p className="brand-eyebrow">By intention</p>
+            <h2 className="mt-3 font-serif text-3xl font-light text-vault-ink md:text-4xl">
               Stories we are asked to commemorate
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-vault-pearl/60 md:text-base">
+            <p className="mt-4 body-editorial md:text-base">
               Most clients arrive with a reason, not a SKU. These are the narratives we work with
               most often — each treated as a design brief, not a template.
             </p>
           </div>
 
-          <div className="grid gap-px bg-vault-forest/20 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
             {storyCommissions.map((item) => (
-              <article
-                key={item.title}
-                className="bg-brand-panel p-8 md:p-10"
-              >
-                <h3 className="font-serif text-xl text-vault-ivory">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-vault-pearl/65">{item.body}</p>
+              <article key={item.title} className="surface-panel rounded-sm p-8 md:p-10">
+                <h3 className="font-serif text-xl text-vault-ink">{item.title}</h3>
+                <p className="mt-3 body-editorial text-sm">{item.body}</p>
               </article>
             ))}
           </div>
@@ -123,11 +120,11 @@ export default function CommissionsPage() {
       <Section className="py-16 md:py-24">
         <Container>
           <div className="mb-12 max-w-2xl md:mb-16">
-            <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Forms</p>
-            <h2 className="mt-3 font-serif text-3xl font-light text-vault-ivory md:text-4xl">
+            <p className="brand-eyebrow">Forms</p>
+            <h2 className="mt-3 font-serif text-3xl font-light text-vault-ink md:text-4xl">
               Rings, pendants, bracelets, chains & custom work
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-vault-pearl/60 md:text-base">
+            <p className="mt-4 body-editorial md:text-base">
               Our live configurator currently supports ring commissions. All other forms begin with
               a private inquiry — same process, same studio standards.
             </p>
@@ -139,9 +136,7 @@ export default function CommissionsPage() {
                 {index > 0 && <EditorialRule />}
                 <div className="grid gap-3 py-8 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-12 md:py-10">
                   <h3 className="font-serif text-lg text-vault-gold md:pt-0.5">{piece.title}</h3>
-                  <p className="text-sm leading-relaxed text-vault-pearl/70 md:text-base">
-                    {piece.body}
-                  </p>
+                  <p className="body-editorial md:text-base">{piece.body}</p>
                 </div>
               </div>
             ))}
@@ -151,8 +146,8 @@ export default function CommissionsPage() {
 
       <Section className="brand-section-alt py-16 md:py-24">
         <Container size="narrow">
-          <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">How to begin</p>
-          <h2 className="mt-3 font-serif text-3xl font-light text-vault-ivory">
+          <p className="brand-eyebrow">How to begin</p>
+          <h2 className="mt-3 font-serif text-3xl font-light text-vault-ink">
             Three ways in — one standard of care
           </h2>
 
@@ -161,17 +156,15 @@ export default function CommissionsPage() {
               <div key={item.label}>
                 {index > 0 && <EditorialRule />}
                 <div className="py-8 md:py-10">
-                  <h3 className="font-serif text-xl text-vault-ivory">{item.label}</h3>
-                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-vault-pearl/65">
-                    {item.detail}
-                  </p>
+                  <h3 className="font-serif text-xl text-vault-ink">{item.label}</h3>
+                  <p className="mt-2 max-w-lg body-editorial text-sm">{item.detail}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <blockquote className="mt-12 border-l-2 border-vault-gold/35 pl-6">
-            <p className="font-serif text-lg italic leading-relaxed text-vault-pearl/75">
+          <blockquote className="mt-12 border-l-2 border-vault-gold/40 pl-6">
+            <p className="font-serif text-lg italic leading-relaxed text-vault-muted">
               Your final quote is prepared after design review and stone sourcing.
             </p>
           </blockquote>
@@ -180,18 +173,18 @@ export default function CommissionsPage() {
 
       <Section className="py-20 md:py-28">
         <Container size="narrow" className="text-center">
-          <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Private access</p>
-          <p className="mt-4 font-serif text-2xl font-light text-vault-ivory md:text-3xl">
+          <p className="brand-eyebrow">Private access</p>
+          <p className="mt-4 font-serif text-2xl font-light text-vault-ink md:text-3xl">
             When you are ready, the studio door is open.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
             <Button size="lg" asChild>
               <Link href={routes.create}>Begin a Commission</Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="secondary" size="lg" asChild>
               <Link href={routes.process}>View the Process</Link>
             </Button>
-            <Button variant="ghost" size="lg" asChild className="text-vault-gold hover:text-vault-gold-light">
+            <Button variant="outline" size="lg" asChild>
               <Link href={routes.create}>Enter the Atelier</Link>
             </Button>
           </div>

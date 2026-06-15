@@ -5,7 +5,7 @@ export default function TermsPage() {
     <Section>
       <Container size="narrow">
         <PageHeader eyebrow="Legal" title="Terms of Service" />
-        <div className="space-y-4 text-sm text-vault-pearl/70">
+        <div className="space-y-4 text-sm text-vault-muted">
           <p>Terms of service content will be finalized before production launch.</p>
         </div>
       </Container>

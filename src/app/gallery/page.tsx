@@ -19,11 +19,11 @@ export default function GalleryPage() {
           {placeholderCreations.map((item) => (
             <article
               key={item.title}
-              className="group aspect-[3/4] border border-white/5 bg-vault-charcoal p-8 flex flex-col justify-end"
+              className="group surface-panel flex aspect-[3/4] flex-col justify-end rounded-sm p-8"
             >
-              <div className="mb-auto aspect-square w-full bg-vault-smoke/80" />
-              <h3 className="mt-6 font-serif text-xl">{item.title}</h3>
-              <p className="mt-2 text-sm text-vault-pearl/60">{item.story}</p>
+              <div className="mb-auto aspect-square w-full rounded-sm bg-vault-warm" />
+              <h3 className="mt-6 font-serif text-xl text-vault-ink">{item.title}</h3>
+              <p className="mt-2 text-sm text-vault-muted">{item.story}</p>
             </article>
           ))}
         </div>

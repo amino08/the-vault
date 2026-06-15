@@ -35,7 +35,7 @@ export function SavedDesignsList({ drafts }: SavedDesignsListProps) {
   if (savedDrafts.length === 0) {
     return (
       <div className="brand-panel p-8 text-center">
-        <p className="text-sm text-vault-pearl/55">No saved designs yet.</p>
+        <p className="text-sm text-vault-muted">No saved designs yet.</p>
         <Link href={routes.create} className="mt-4 inline-block text-sm text-vault-gold hover:underline">
           Start designing →
         </Link>
@@ -58,8 +58,8 @@ export function SavedDesignsList({ drafts }: SavedDesignsListProps) {
                 </span>
                 <p className="text-xs text-vault-pearl/45">Saved {formatDate(savedAt ?? draft.updated_at)}</p>
               </div>
-              <h3 className="font-serif text-xl text-vault-ivory">{draft.title}</h3>
-              <p className="text-sm text-vault-pearl/55">
+              <h3 className="font-serif text-xl text-vault-ink">{draft.title}</h3>
+              <p className="text-sm text-vault-muted">
                 {summary.metal} · {summary.stone} · {summary.bandStyle}
               </p>
             </div>

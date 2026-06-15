@@ -4,17 +4,15 @@ import { cn } from "@/lib/utils";
 
 export function AdminSidebar() {
   return (
-    <aside className="w-full border-b border-vault-forest/25 pb-4 md:w-60 md:rounded-sm md:border-b-0 md:border-r md:bg-vault-forest/[0.08] md:p-5 md:pr-6">
-      <p className="mb-4 hidden text-[10px] uppercase tracking-luxury text-vault-gold md:block">
-        Enter Aevum · Internal
-      </p>
+    <aside className="w-full border-b border-vault-forest/10 pb-4 md:w-60 md:rounded-sm md:border-b-0 md:border-r md:border-vault-forest/10 md:bg-vault-ivory md:p-5 md:pr-6 md:shadow-panel">
+      <p className="mb-4 hidden brand-eyebrow text-[10px] md:block">Enter Aevum · Operations</p>
       <nav className="flex gap-4 overflow-x-auto pb-4 md:flex-col md:gap-1 md:pb-0">
         {adminNav.map((item) => (
           <Link
             key={item.href}
             href={item.href}
             className={cn(
-              "whitespace-nowrap rounded-sm px-3 py-2 text-sm text-vault-pearl/75 transition-colors hover:bg-vault-forest/20 hover:text-vault-gold",
+              "whitespace-nowrap rounded-sm px-3 py-2 text-sm text-vault-muted transition-colors hover:bg-vault-warm hover:text-vault-forest",
             )}
           >
             {item.label}
@@ -36,9 +34,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
 export function AdminPlaceholder({ title, description }: { title: string; description: string }) {
   return (
-    <div className="brand-panel border-dashed p-10">
-      <h2 className="font-serif text-xl text-vault-cream">{title}</h2>
-      <p className="mt-2 text-sm text-vault-pearl/65">{description}</p>
+    <div className="surface-panel rounded-sm border-dashed border-vault-forest/20 p-10">
+      <h2 className="font-serif text-xl text-vault-ink">{title}</h2>
+      <p className="mt-2 text-sm text-vault-muted">{description}</p>
     </div>
   );
 }

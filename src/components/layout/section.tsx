@@ -8,7 +8,7 @@ interface SectionProps {
 
 export function Section({ children, className, id }: SectionProps) {
   return (
-    <section id={id} className={cn("py-24 md:py-32", className)}>
+    <section id={id} className={cn("py-20 md:py-28", className)}>
       {children}
     </section>
   );
@@ -39,17 +39,30 @@ interface PageHeaderProps {
   title: string;
   description?: string;
   className?: string;
+  dark?: boolean;
 }
 
-export function PageHeader({ eyebrow, title, description, className }: PageHeaderProps) {
+export function PageHeader({ eyebrow, title, description, className, dark = false }: PageHeaderProps) {
   return (
-    <div className={cn("mb-16 space-y-4", className)}>
-      {eyebrow && <p className="brand-eyebrow">{eyebrow}</p>}
-      <h1 className="font-serif text-4xl font-light tracking-wide text-vault-ivory md:text-5xl lg:text-6xl">
+    <div className={cn("mb-12 space-y-5 md:mb-16", className)}>
+      {eyebrow && <p className={dark ? "atelier-eyebrow" : "brand-eyebrow"}>{eyebrow}</p>}
+      <h1
+        className={cn(
+          "font-serif text-4xl font-light tracking-wide md:text-5xl lg:text-6xl",
+          dark ? "text-vault-cream-text" : "text-vault-ink",
+        )}
+      >
         {title}
       </h1>
       {description && (
-        <p className="max-w-2xl text-lg text-vault-pearl/70">{description}</p>
+        <p
+          className={cn(
+            "max-w-2xl text-lg leading-relaxed",
+            dark ? "text-vault-pearl/70" : "text-vault-muted",
+          )}
+        >
+          {description}
+        </p>
       )}
     </div>
   );

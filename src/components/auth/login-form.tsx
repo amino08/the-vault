@@ -21,7 +21,7 @@ export function LoginForm({ nextPath }: LoginFormProps) {
   );
 
   return (
-    <form action={formAction} className="space-y-6 border border-white/5 bg-vault-charcoal p-10">
+    <form action={formAction} className="surface-panel space-y-6 rounded-sm p-10">
       {nextPath && <input type="hidden" name="next" value={nextPath} />}
 
       {state.error && (
@@ -44,7 +44,7 @@ export function LoginForm({ nextPath }: LoginFormProps) {
         {pending ? "Signing in..." : "Sign In"}
       </Button>
 
-      <p className="text-center text-sm text-vault-pearl/60">
+      <p className="text-center text-sm text-vault-muted">
         No account?{" "}
         <Link
           href={nextPath ? `${routes.auth.signup}?next=${encodeURIComponent(nextPath)}` : routes.auth.signup}

@@ -9,7 +9,7 @@ export default function AboutPage() {
           title="The Vault by Enter Aevum"
           description="A luxury commission house for clients who measure value in meaning — not mass production."
         />
-        <div className="prose-vault space-y-6 text-vault-pearl/80">
+        <div className="space-y-6 body-editorial">
           <p>
             The Vault exists at the intersection of fine jewelry craftsmanship and personal
             narrative. Each commission is a collaboration between client and atelier — shaped by

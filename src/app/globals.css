@@ -4,32 +4,40 @@
 
 @layer base {
   :root {
-    --background: 155 16% 5%;
-    --foreground: 40 24% 96%;
-    --card: 155 12% 8%;
-    --card-foreground: 40 24% 96%;
-    --primary: 43 44% 59%;
-    --primary-foreground: 155 28% 10%;
-    --secondary: 155 10% 12%;
-    --secondary-foreground: 40 24% 96%;
-    --muted: 155 10% 12%;
-    --muted-foreground: 40 8% 65%;
-    --accent: 43 44% 59%;
-    --accent-foreground: 155 28% 10%;
+    --background: 40 33% 97%;
+    --foreground: 160 28% 14%;
+    --card: 40 40% 99%;
+    --card-foreground: 160 28% 14%;
+    --primary: 38 38% 54%;
+    --primary-foreground: 160 28% 12%;
+    --secondary: 160 38% 17%;
+    --secondary-foreground: 40 33% 97%;
+    --muted: 40 20% 93%;
+    --muted-foreground: 160 8% 40%;
+    --accent: 160 38% 17%;
+    --accent-foreground: 40 33% 97%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 155 10% 18%;
-    --input: 155 10% 14%;
-    --ring: 43 44% 59%;
+    --border: 160 12% 85%;
+    --input: 40 25% 94%;
+    --ring: 38 38% 54%;
     --radius: 0.125rem;
 
-    /* Vault brand tokens — referenced here to avoid @apply JIT issues on Vercel */
-    --vault-black: #0a0c0b;
-    --vault-ivory: #f5f2ea;
-    --vault-cream: #f7f4ee;
-    --vault-gold: #c9a962;
-    --vault-forest: #1b2f28;
-    --vault-forest-deep: #121c18;
+    --vault-cream: #f9f6f0;
+    --vault-ivory: #fffdf9;
+    --vault-warm: #f3ede3;
+    --vault-ink: #1a2e28;
+    --vault-muted: #5c6b63;
+    --vault-forest: #1b3d32;
+    --vault-forest-deep: #0f2822;
+    --vault-forest-light: #2a5246;
+    --vault-gold: #b8985a;
+    --vault-gold-light: #d4bc7a;
+    --vault-charcoal: #252922;
+    --vault-smoke: #2f3530;
+    --vault-black: #1a1d1b;
+    --vault-cream-text: #f7f4ee;
+    --vault-pearl: #e8e4da;
   }
 
   * {
@@ -41,35 +49,54 @@
   }
 
   body {
-    background-color: var(--vault-black);
-    color: var(--vault-ivory);
+    background-color: var(--vault-cream);
+    color: var(--vault-ink);
     @apply antialiased;
-    background-image: radial-gradient(
-      ellipse 120% 80% at 50% -20%,
-      rgba(27, 47, 40, 0.22),
-      transparent 55%
-    );
   }
 
   ::selection {
-    background-color: rgb(201 169 98 / 0.3);
-    color: var(--vault-cream);
+    background-color: rgb(184 152 90 / 0.25);
+    color: var(--vault-forest-deep);
   }
 }
 
 @layer components {
-  .brand-section-alt {
-    border-top: 1px solid rgb(27 47 40 / 0.15);
-    background-color: rgb(27 47 40 / 0.06);
+  /* —— Light editorial surfaces (public + dashboard) —— */
+  .surface-page {
+    background-color: var(--vault-cream);
   }
 
-  .brand-panel {
-    border: 1px solid rgb(27 47 40 / 0.2);
-    background: linear-gradient(145deg, rgb(20 25 22 / 0.95) 0%, rgb(27 47 40 / 0.18) 100%);
+  .surface-ivory {
+    background-color: var(--vault-ivory);
+    border-top: 1px solid rgb(27 61 50 / 0.08);
+    border-bottom: 1px solid rgb(27 61 50 / 0.08);
+  }
+
+  .surface-panel {
+    background-color: var(--vault-ivory);
+    border: 1px solid rgb(27 61 50 / 0.1);
+    box-shadow: 0 1px 3px rgb(26 46 40 / 0.06), 0 8px 32px rgb(26 46 40 / 0.04);
+  }
+
+  .brand-section-alt {
+    background-color: var(--vault-ivory);
+    border-top: 1px solid rgb(27 61 50 / 0.08);
+    border-bottom: 1px solid rgb(27 61 50 / 0.08);
   }
 
   .brand-eyebrow {
-    @apply text-xs uppercase tracking-luxury;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--vault-forest);
+  }
+
+  .brand-eyebrow-gold {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
     color: var(--vault-gold);
   }
 
@@ -79,9 +106,46 @@
     background-image: linear-gradient(
       to right,
       transparent,
-      rgb(201 169 98 / 0.25),
+      rgb(184 152 90 / 0.35),
       transparent
     );
+  }
+
+  .heading-editorial {
+    @apply font-serif font-light tracking-wide text-vault-ink;
+  }
+
+  .body-editorial {
+    @apply text-vault-muted leading-relaxed;
+  }
+
+  /* —— Private atelier (configurator only) —— */
+  .atelier-stage {
+    background: linear-gradient(165deg, var(--vault-charcoal) 0%, var(--vault-black) 100%);
+    border: 1px solid rgb(184 152 90 / 0.12);
+    box-shadow: 0 24px 64px -24px rgb(0 0 0 / 0.45), inset 0 0 0 1px rgb(184 152 90 / 0.06);
+    color: var(--vault-cream-text);
+  }
+
+  .atelier-eyebrow {
+    font-size: 0.625rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--vault-gold);
+  }
+
+  .atelier-input {
+    border: 1px solid rgb(255 255 255 / 0.1);
+    background-color: var(--vault-smoke);
+    color: var(--vault-cream-text);
+  }
+
+  /* Legacy alias — light panels on dashboard */
+  .brand-panel {
+    background-color: var(--vault-ivory);
+    border: 1px solid rgb(27 61 50 / 0.1);
+    box-shadow: 0 1px 3px rgb(26 46 40 / 0.06), 0 8px 32px rgb(26 46 40 / 0.04);
   }
 }
 

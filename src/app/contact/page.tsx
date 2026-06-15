@@ -11,8 +11,8 @@ export default function ContactPage() {
           title="Begin the Conversation"
           description="Private consultations for commission inquiries. We respond within one business day."
         />
-        <div className="space-y-6 border border-white/5 bg-vault-charcoal p-10">
-          <p className="text-vault-pearl/70">
+        <div className="surface-panel space-y-6 rounded-sm p-10">
+          <p className="text-vault-muted">
             Email us directly or begin a formal commission through the portal.
           </p>
           <Button asChild>

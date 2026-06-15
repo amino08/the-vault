@@ -5,8 +5,8 @@ export default function AccountApprovalsPage() {
   return (
     <AccountShell>
       <PageHeader title="Render Approvals" description="Review and approve design concepts and CAD renders." />
-      <div className="border border-white/5 bg-vault-charcoal p-10">
-        <p className="text-sm text-vault-pearl/60">
+      <div className="surface-panel rounded-sm p-10">
+        <p className="text-sm text-vault-muted">
           Design and CAD approval workflows arrive in Phase 2.
         </p>
       </div>

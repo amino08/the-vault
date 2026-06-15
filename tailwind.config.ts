@@ -13,21 +13,27 @@ const config: Config = {
     extend: {
       colors: {
         vault: {
-          black: "#0A0C0B",
-          charcoal: "#141916",
-          smoke: "#1C211E",
+          black: "#1A1D1B",
+          charcoal: "#252922",
+          smoke: "#2F3530",
           forest: {
-            DEFAULT: "#1B2F28",
-            deep: "#121C18",
-            light: "#243D34",
-            muted: "#2F4A40",
+            DEFAULT: "#1B3D32",
+            deep: "#0F2822",
+            light: "#2A5246",
+            muted: "#3D6B5C",
           },
-          gold: "#C9A962",
+          gold: "#B8985A",
           "gold-light": "#D4BC7A",
-          "gold-muted": "#8A7340",
-          cream: "#F7F4EE",
-          ivory: "#F5F2EA",
+          "gold-muted": "#9A7F4A",
+          "gold-brush": "#C9A962",
+          cream: "#F9F6F0",
+          ivory: "#FFFDF9",
+          warm: "#F3EDE3",
+          ink: "#1A2E28",
+          muted: "#5C6B63",
+          "muted-light": "#8A9690",
           pearl: "#E8E4DA",
+          "cream-text": "#F7F4EE",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -65,6 +71,7 @@ const config: Config = {
       },
       letterSpacing: {
         luxury: "0.2em",
+        editorial: "0.12em",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -81,10 +88,14 @@ const config: Config = {
         },
       },
       backgroundImage: {
+        "brand-radial-light":
+          "radial-gradient(ellipse 90% 70% at 50% -20%, rgba(27, 61, 50, 0.08), transparent 60%)",
         "brand-radial":
-          "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(27, 47, 40, 0.45), transparent)",
-        "brand-panel":
-          "linear-gradient(145deg, rgba(20, 25, 22, 0.95) 0%, rgba(27, 47, 40, 0.18) 100%)",
+          "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(27, 61, 50, 0.35), transparent)",
+      },
+      boxShadow: {
+        panel: "0 1px 3px rgba(26, 46, 40, 0.06), 0 8px 32px rgba(26, 46, 40, 0.04)",
+        atelier: "0 24px 64px -24px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(184, 152, 90, 0.08)",
       },
     },
   },

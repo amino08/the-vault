@@ -25,10 +25,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body className={`${geistSans.variable} ${playfair.variable} font-sans`}>
         <SiteHeader />
-        <main className="min-h-screen pt-20">{children}</main>
+        <main className="min-h-screen bg-vault-cream pt-20">{children}</main>
         <SiteFooter />
       </body>
     </html>

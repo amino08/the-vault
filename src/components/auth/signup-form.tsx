@@ -21,7 +21,7 @@ export function SignupForm({ nextPath }: SignupFormProps) {
   );
 
   return (
-    <form action={formAction} className="space-y-6 border border-white/5 bg-vault-charcoal p-10">
+    <form action={formAction} className="surface-panel space-y-6 rounded-sm p-10">
       {nextPath && <input type="hidden" name="next" value={nextPath} />}
 
       {state.error && (
@@ -62,7 +62,7 @@ export function SignupForm({ nextPath }: SignupFormProps) {
         {pending ? "Creating account..." : "Create Account"}
       </Button>
 
-      <p className="text-center text-sm text-vault-pearl/60">
+      <p className="text-center text-sm text-vault-muted">
         Already registered?{" "}
         <Link
           href={nextPath ? `${routes.auth.login}?next=${encodeURIComponent(nextPath)}` : routes.auth.login}

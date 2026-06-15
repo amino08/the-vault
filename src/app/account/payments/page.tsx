@@ -5,8 +5,8 @@ export default function AccountPaymentsPage() {
   return (
     <AccountShell>
       <PageHeader title="Payments" description="Invoices, deposits, and payment history." />
-      <div className="border border-white/5 bg-vault-charcoal p-10">
-        <p className="text-sm text-vault-pearl/60">
+      <div className="surface-panel rounded-sm p-10">
+        <p className="text-sm text-vault-muted">
           Stripe checkout and payment history arrive in Phase 2.
         </p>
       </div>

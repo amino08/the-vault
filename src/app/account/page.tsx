@@ -28,16 +28,16 @@ export default async function AccountPage() {
 
       <section className="mb-12 space-y-4">
         <div>
-          <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Saved Designs</p>
-          <p className="mt-1 font-serif text-xl text-vault-ivory">Continue Where You Left Off</p>
+          <p className="brand-eyebrow text-[10px]">Saved Designs</p>
+          <p className="mt-1 font-serif text-xl text-vault-ink">Continue Where You Left Off</p>
         </div>
         <SavedDesignsList drafts={drafts} />
       </section>
 
       <section className="space-y-4">
         <div>
-          <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Active Commissions</p>
-          <p className="mt-1 font-serif text-xl text-vault-ivory">Submitted Inquiries</p>
+          <p className="brand-eyebrow text-[10px]">Active Commissions</p>
+          <p className="mt-1 font-serif text-xl text-vault-ink">Submitted Inquiries</p>
         </div>
         <CommissionList commissions={submitted} />
       </section>

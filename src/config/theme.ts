@@ -1,29 +1,33 @@
 /**
- * The Vault × Enter Aevum — brand palette tokens.
- * Tailwind mirrors these in tailwind.config.ts as vault-* utilities.
+ * The Vault × Enter Aevum — brand palette.
+ * Tailwind mirrors these as vault-* utilities in tailwind.config.ts.
  */
 export const brandColors = {
-  /** Deep forest — headers, footer, brand identity */
   forest: {
-    DEFAULT: "#1B2F28",
-    deep: "#121C18",
-    light: "#243D34",
-    muted: "#2F4A40",
+    DEFAULT: "#1B3D32",
+    deep: "#0F2822",
+    light: "#2A5246",
+    muted: "#3D6B5C",
   },
-  /** Warm metallics — CTAs, active states, highlights */
   gold: {
-    DEFAULT: "#C9A962",
+    DEFAULT: "#B8985A",
     light: "#D4BC7A",
-    muted: "#8A7340",
+    muted: "#9A7F4A",
+    brush: "#C9A962",
   },
-  /** Readable typography on dark surfaces */
-  cream: "#F7F4EE",
-  ivory: "#F5F2EA",
+  cream: "#F9F6F0",
+  ivory: "#FFFDF9",
+  warm: "#F3EDE3",
+  ink: "#1A2E28",
+  muted: "#5C6B63",
+  "muted-light": "#8A9690",
+  /** Atelier / configurator surfaces only */
+  charcoal: "#252922",
+  smoke: "#2F3530",
+  black: "#1A1D1B",
+  /** Typography on dark atelier surfaces */
   pearl: "#E8E4DA",
-  /** Showroom / atelier panels — configurator preview stays here */
-  charcoal: "#141916",
-  smoke: "#1C211E",
-  black: "#0A0C0B",
+  "cream-text": "#F7F4EE",
 } as const;
 
 export type BrandColor = typeof brandColors;
