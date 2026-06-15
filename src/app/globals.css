@@ -4,22 +4,22 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 40 10% 96%;
-    --card: 0 0% 8%;
-    --card-foreground: 40 10% 96%;
+    --background: 155 16% 5%;
+    --foreground: 40 24% 96%;
+    --card: 155 12% 8%;
+    --card-foreground: 40 24% 96%;
     --primary: 43 44% 59%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 11%;
-    --secondary-foreground: 40 10% 96%;
-    --muted: 0 0% 11%;
-    --muted-foreground: 40 5% 65%;
+    --primary-foreground: 155 28% 10%;
+    --secondary: 155 10% 12%;
+    --secondary-foreground: 40 24% 96%;
+    --muted: 155 10% 12%;
+    --muted-foreground: 40 8% 65%;
     --accent: 43 44% 59%;
-    --accent-foreground: 0 0% 4%;
+    --accent-foreground: 155 28% 10%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 155 10% 18%;
+    --input: 155 10% 14%;
     --ring: 43 44% 59%;
     --radius: 0.125rem;
   }
@@ -34,10 +34,33 @@
 
   body {
     @apply bg-vault-black text-vault-ivory antialiased;
+    background-image: radial-gradient(
+      ellipse 120% 80% at 50% -20%,
+      rgba(27, 47, 40, 0.22),
+      transparent 55%
+    );
   }
 
   ::selection {
-    @apply bg-vault-gold/30 text-vault-ivory;
+    @apply bg-vault-gold/30 text-vault-cream;
+  }
+}
+
+@layer components {
+  .brand-section-alt {
+    @apply border-t border-vault-forest/15 bg-vault-forest/[0.06];
+  }
+
+  .brand-panel {
+    @apply border border-vault-forest/20 bg-brand-panel;
+  }
+
+  .brand-eyebrow {
+    @apply text-xs uppercase tracking-luxury text-vault-gold;
+  }
+
+  .brand-rule {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-vault-gold/25 to-transparent;
   }
 }
 

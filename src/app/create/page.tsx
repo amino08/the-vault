@@ -21,8 +21,9 @@ export default async function CreatePage({ searchParams }: CreatePageProps) {
   }
 
   return (
-    <Section className="py-14 md:py-20">
-      <Container size="wide">
+    <Section className="relative py-14 md:py-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-brand-radial opacity-60" aria-hidden />
+      <Container size="wide" className="relative">
         <PageHeader
           className="mb-8 md:mb-10"
           eyebrow="Atelier"

@@ -67,7 +67,7 @@ const beginSteps = [
 function EditorialRule() {
   return (
     <div className="py-2" aria-hidden>
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-vault-gold/20 to-transparent" />
+      <div className="brand-rule" />
     </div>
   );
 }
@@ -93,7 +93,7 @@ export default function CommissionsPage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-white/[0.04] bg-vault-charcoal/20 py-16 md:py-24">
+      <Section className="brand-section-alt py-16 md:py-24">
         <Container>
           <div className="mb-12 max-w-2xl md:mb-16">
             <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">By intention</p>
@@ -106,11 +106,11 @@ export default function CommissionsPage() {
             </p>
           </div>
 
-          <div className="grid gap-px bg-white/[0.04] md:grid-cols-2">
+          <div className="grid gap-px bg-vault-forest/20 md:grid-cols-2">
             {storyCommissions.map((item) => (
               <article
                 key={item.title}
-                className="bg-vault-black/40 p-8 md:p-10"
+                className="bg-brand-panel p-8 md:p-10"
               >
                 <h3 className="font-serif text-xl text-vault-ivory">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-vault-pearl/65">{item.body}</p>
@@ -149,7 +149,7 @@ export default function CommissionsPage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-white/[0.04] bg-vault-charcoal/20 py-16 md:py-24">
+      <Section className="brand-section-alt py-16 md:py-24">
         <Container size="narrow">
           <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">How to begin</p>
           <h2 className="mt-3 font-serif text-3xl font-light text-vault-ivory">
@@ -170,7 +170,7 @@ export default function CommissionsPage() {
             ))}
           </div>
 
-          <blockquote className="mt-12 border-l border-vault-gold/30 pl-6">
+          <blockquote className="mt-12 border-l-2 border-vault-gold/35 pl-6">
             <p className="font-serif text-lg italic leading-relaxed text-vault-pearl/75">
               Your final quote is prepared after design review and stone sourcing.
             </p>

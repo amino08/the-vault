@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 
 export function AdminSidebar() {
   return (
-    <aside className="w-full border-b border-white/5 md:w-56 md:border-b-0 md:border-r md:pr-8">
-      <p className="mb-4 hidden text-xs uppercase tracking-luxury text-vault-gold md:block">
-        Internal
+    <aside className="w-full border-b border-vault-forest/25 pb-4 md:w-60 md:rounded-sm md:border-b-0 md:border-r md:bg-vault-forest/[0.08] md:p-5 md:pr-6">
+      <p className="mb-4 hidden text-[10px] uppercase tracking-luxury text-vault-gold md:block">
+        Enter Aevum · Internal
       </p>
       <nav className="flex gap-4 overflow-x-auto pb-4 md:flex-col md:gap-1 md:pb-0">
         {adminNav.map((item) => (
@@ -14,7 +14,7 @@ export function AdminSidebar() {
             key={item.href}
             href={item.href}
             className={cn(
-              "whitespace-nowrap px-3 py-2 text-sm text-vault-pearl/70 hover:text-vault-gold",
+              "whitespace-nowrap rounded-sm px-3 py-2 text-sm text-vault-pearl/75 transition-colors hover:bg-vault-forest/20 hover:text-vault-gold",
             )}
           >
             {item.label}
@@ -36,9 +36,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
 export function AdminPlaceholder({ title, description }: { title: string; description: string }) {
   return (
-    <div className="border border-dashed border-vault-gold/20 bg-vault-charcoal/50 p-10">
-      <h2 className="font-serif text-xl">{title}</h2>
-      <p className="mt-2 text-sm text-vault-pearl/60">{description}</p>
+    <div className="brand-panel border-dashed p-10">
+      <h2 className="font-serif text-xl text-vault-cream">{title}</h2>
+      <p className="mt-2 text-sm text-vault-pearl/65">{description}</p>
     </div>
   );
 }

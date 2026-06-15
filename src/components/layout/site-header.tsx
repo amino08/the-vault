@@ -12,16 +12,16 @@ export function SiteHeader({ className }: SiteHeaderProps) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-vault-black/80 backdrop-blur-md",
+        "fixed inset-x-0 top-0 z-50 border-b border-vault-forest/30 bg-vault-forest-deep/90 backdrop-blur-md",
         className,
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-10">
         <Link href={routes.home} className="group">
-          <span className="block font-serif text-lg tracking-wide text-vault-ivory">
+          <span className="block font-serif text-lg tracking-wide text-vault-cream">
             {siteConfig.shortName}
           </span>
-          <span className="block text-[10px] uppercase tracking-luxury text-vault-gold/80">
+          <span className="block text-[10px] uppercase tracking-luxury text-vault-gold/90">
             by Enter Aevum
           </span>
         </Link>
@@ -31,7 +31,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
             <Link
               key={item.href}
               href={item.href}
-              className="text-xs uppercase tracking-luxury text-vault-pearl/70 transition-colors hover:text-vault-gold"
+              className="text-xs uppercase tracking-luxury text-vault-pearl/75 transition-colors hover:text-vault-gold"
             >
               {item.label}
             </Link>

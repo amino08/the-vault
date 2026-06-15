@@ -44,9 +44,7 @@ interface PageHeaderProps {
 export function PageHeader({ eyebrow, title, description, className }: PageHeaderProps) {
   return (
     <div className={cn("mb-16 space-y-4", className)}>
-      {eyebrow && (
-        <p className="text-xs uppercase tracking-luxury text-vault-gold">{eyebrow}</p>
-      )}
+      {eyebrow && <p className="brand-eyebrow">{eyebrow}</p>}
       <h1 className="font-serif text-4xl font-light tracking-wide text-vault-ivory md:text-5xl lg:text-6xl">
         {title}
       </h1>

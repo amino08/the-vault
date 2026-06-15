@@ -19,7 +19,7 @@ interface CommissionListProps {
 export function CommissionList({ commissions, basePath = "/account/commissions" }: CommissionListProps) {
   if (commissions.length === 0) {
     return (
-      <div className="border border-white/5 bg-vault-charcoal p-10 text-center">
+      <div className="brand-panel p-10 text-center">
         <p className="text-vault-pearl/60">No commissions yet.</p>
         <Link href="/create" className="mt-4 inline-block text-sm text-vault-gold hover:underline">
           Begin your first commission →
@@ -29,12 +29,12 @@ export function CommissionList({ commissions, basePath = "/account/commissions" 
   }
 
   return (
-    <ul className="divide-y divide-white/5 border border-white/5 bg-vault-charcoal">
+    <ul className="brand-panel divide-y divide-vault-forest/25">
       {commissions.map((c) => (
         <li key={c.id}>
           <Link
             href={`${basePath}/${c.id}`}
-            className="flex flex-col gap-3 p-6 transition-colors hover:bg-vault-smoke/50 md:flex-row md:items-center md:justify-between"
+            className="flex flex-col gap-3 p-6 transition-colors hover:bg-vault-forest/10 md:flex-row md:items-center md:justify-between"
           >
             <div className="space-y-1">
               <p className="text-xs uppercase tracking-luxury text-vault-gold/80">

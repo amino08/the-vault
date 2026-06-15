@@ -46,7 +46,7 @@ const phases = [
 function EditorialRule() {
   return (
     <div className="py-2" aria-hidden>
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-vault-gold/20 to-transparent" />
+      <div className="brand-rule" />
     </div>
   );
 }
@@ -72,7 +72,7 @@ export default function ProcessPage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-white/[0.04] bg-vault-charcoal/20 py-16 md:py-24">
+      <Section className="brand-section-alt py-16 md:py-24">
         <Container>
           <article>
             {phases.map((phase, index) => (
@@ -90,7 +90,7 @@ export default function ProcessPage() {
                       {phase.body}
                     </p>
                     {"note" in phase && phase.note && (
-                      <p className="max-w-2xl border-l border-vault-gold/25 pl-4 text-sm italic text-vault-pearl/45">
+                      <p className="max-w-2xl border-l-2 border-vault-gold/35 pl-4 text-sm italic text-vault-pearl/50">
                         {phase.note}
                       </p>
                     )}

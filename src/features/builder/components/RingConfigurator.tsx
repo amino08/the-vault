@@ -420,7 +420,7 @@ export function RingConfigurator({
           </div>
         </div>
 
-        <div className="space-y-6 border border-white/[0.06] bg-vault-charcoal/60 p-6 lg:p-8">
+        <div className="space-y-6 brand-panel p-6 lg:p-8">
           <div>
             <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Commission Narrative</p>
             <p className="mt-1 font-serif text-lg text-vault-ivory">Your Story</p>

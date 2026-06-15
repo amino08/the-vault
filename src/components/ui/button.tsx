@@ -4,15 +4,17 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-vault-gold disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vault-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-vault-black disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-vault-gold text-vault-black hover:bg-vault-gold-light",
+        default:
+          "bg-vault-gold text-vault-forest-deep shadow-[0_4px_24px_-6px_rgba(201,169,98,0.45)] hover:bg-vault-gold-light hover:shadow-[0_6px_28px_-4px_rgba(201,169,98,0.5)]",
         outline:
-          "border border-vault-gold/40 bg-transparent text-vault-ivory hover:border-vault-gold hover:text-vault-gold",
-        ghost: "text-vault-ivory hover:bg-vault-smoke hover:text-vault-gold",
-        link: "text-vault-gold underline-offset-4 hover:underline",
+          "border border-vault-gold/45 bg-vault-forest/10 text-vault-cream hover:border-vault-gold hover:bg-vault-forest/20 hover:text-vault-gold-light",
+        ghost:
+          "text-vault-pearl hover:bg-vault-forest/15 hover:text-vault-gold",
+        link: "text-vault-gold underline-offset-4 hover:text-vault-gold-light hover:underline",
       },
       size: {
         default: "h-11 px-8 py-2",

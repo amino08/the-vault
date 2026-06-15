@@ -34,7 +34,7 @@ export function SavedDesignsList({ drafts }: SavedDesignsListProps) {
 
   if (savedDrafts.length === 0) {
     return (
-      <div className="border border-white/5 bg-vault-charcoal p-8 text-center">
+      <div className="brand-panel p-8 text-center">
         <p className="text-sm text-vault-pearl/55">No saved designs yet.</p>
         <Link href={routes.create} className="mt-4 inline-block text-sm text-vault-gold hover:underline">
           Start designing →
@@ -44,7 +44,7 @@ export function SavedDesignsList({ drafts }: SavedDesignsListProps) {
   }
 
   return (
-    <ul className="divide-y divide-white/5 border border-white/5 bg-vault-charcoal">
+    <ul className="brand-panel divide-y divide-vault-forest/25">
       {savedDrafts.map((draft) => {
         const summary = draftSummary(draft);
         const savedAt = getDraftSavedAt(draft);

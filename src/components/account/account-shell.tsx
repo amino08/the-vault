@@ -10,11 +10,12 @@ export async function AccountShell({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-12 md:flex-row md:px-10">
-      <aside className="w-full border-b border-white/5 md:w-56 md:border-b-0 md:border-r md:pr-8">
+      <aside className="w-full border-b border-vault-forest/25 pb-4 md:w-60 md:rounded-sm md:border-b-0 md:border-r md:bg-vault-forest/[0.08] md:p-5 md:pr-6">
         {profile && (
           <div className="mb-6 hidden md:block">
-            <p className="text-sm text-vault-ivory">{profile.full_name ?? profile.email}</p>
-            <p className="text-xs capitalize text-vault-pearl/50">{profile.role}</p>
+            <p className="text-[10px] uppercase tracking-luxury text-vault-gold/80">Client</p>
+            <p className="mt-1 text-sm text-vault-cream">{profile.full_name ?? profile.email}</p>
+            <p className="text-xs capitalize text-vault-pearl/55">{profile.role}</p>
           </div>
         )}
         <nav className="flex gap-4 overflow-x-auto pb-4 md:flex-col md:gap-1 md:pb-0">
@@ -23,7 +24,7 @@ export async function AccountShell({ children }: { children: React.ReactNode }) 
               key={item.href}
               href={item.href}
               className={cn(
-                "whitespace-nowrap px-3 py-2 text-sm text-vault-pearl/70 hover:text-vault-gold",
+                "whitespace-nowrap rounded-sm px-3 py-2 text-sm text-vault-pearl/75 transition-colors hover:bg-vault-forest/20 hover:text-vault-gold",
               )}
             >
               {item.label}
@@ -32,7 +33,7 @@ export async function AccountShell({ children }: { children: React.ReactNode }) 
           {profile && isStaffRole(profile.role) && (
             <Link
               href={routes.admin}
-              className="whitespace-nowrap px-3 py-2 text-sm text-vault-gold hover:underline"
+              className="whitespace-nowrap rounded-sm px-3 py-2 text-sm text-vault-gold hover:bg-vault-forest/20"
             >
               Admin Dashboard
             </Link>
