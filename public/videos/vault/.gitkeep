@@ -1,0 +1,5 @@
+# Drop hero video here
+# Required: video.mov  → served at /videos/vault/video.mov
+# Optional:  video.mp4  → H.264 for Chrome/Firefox (recommended for production)
+#
+# ffmpeg -i video.mov -c:v libx264 -crf 20 -pix_fmt yuv420p -an video.mp4

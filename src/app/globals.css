@@ -429,6 +429,69 @@
   .hero-showroom-link:hover {
     color: var(--vault-gold);
   }
+
+  /* —— Hero background video —— */
+  .hero-with-video {
+    isolation: isolate;
+  }
+
+  .hero-video-media {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        105deg,
+        rgb(249 246 240 / 0.94) 0%,
+        rgb(249 246 240 / 0.88) 38%,
+        rgb(249 246 240 / 0.78) 62%,
+        rgb(249 246 240 / 0.72) 100%
+      ),
+      linear-gradient(to bottom, rgb(15 40 34 / 0.12), transparent 45%);
+    pointer-events: none;
+  }
+
+  .hero-video-fallback {
+    background-image: radial-gradient(
+      ellipse 90% 70% at 50% -20%,
+      rgb(27 61 50 / 0.08),
+      transparent 60%
+    );
+    background-color: var(--vault-cream);
+  }
+
+  @media (max-width: 1023px) {
+    .hero-video-overlay {
+      background:
+        linear-gradient(
+          to bottom,
+          rgb(249 246 240 / 0.92) 0%,
+          rgb(249 246 240 / 0.85) 55%,
+          rgb(249 246 240 / 0.8) 100%
+        ),
+        linear-gradient(to bottom, rgb(15 40 34 / 0.1), transparent 40%);
+    }
+
+    .hero-video-media {
+      object-position: center 30%;
+      opacity: 0.55;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-video-media {
+      opacity: 0.5;
+    }
+  }
 }
 
 @layer utilities {

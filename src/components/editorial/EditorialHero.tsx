@@ -3,15 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/section";
 import { routes } from "@/config/routes";
 import { editorialHero } from "@/content/editorial";
+import { HeroBackgroundVideo } from "@/components/editorial/HeroBackgroundVideo";
 import { HeroConfiguratorShowcase } from "@/components/editorial/HeroConfiguratorShowcase";
 
 export function EditorialHero() {
   const headlineLines = editorialHero.headline.split("\n");
 
   return (
-    <section className="relative overflow-hidden pb-8 pt-16 md:pb-12 md:pt-20">
-      <div className="absolute inset-0 bg-brand-radial-light" aria-hidden />
-      <Container className="relative">
+    <section className="hero-with-video relative overflow-hidden pb-8 pt-16 md:pb-12 md:pt-20">
+      <HeroBackgroundVideo />
+      <div className="hero-video-overlay" aria-hidden />
+
+      <Container className="relative z-10">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="order-2 space-y-7 py-4 lg:order-1 lg:py-12 xl:py-16">
             <p className="brand-eyebrow">{editorialHero.eyebrow}</p>
