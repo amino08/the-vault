@@ -10,9 +10,7 @@ interface HeroBackgroundVideoProps {
 
 /**
  * Luxury hero background — autoplay muted loop.
- * Falls back to cream radial if sources fail (missing file or unsupported codec).
- *
- * Browser note: .mov works in Safari; add video.mp4 (H.264) for Chrome/Firefox/Edge.
+ * Primary source: /videos/vault/video.mp4
  */
 export function HeroBackgroundVideo({ className }: HeroBackgroundVideoProps) {
   const [useFallback, setUseFallback] = useState(false);
@@ -38,7 +36,7 @@ export function HeroBackgroundVideo({ className }: HeroBackgroundVideoProps) {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         onError={handleError}
       >
         <source src={vaultVideos.hero.mp4} type="video/mp4" />

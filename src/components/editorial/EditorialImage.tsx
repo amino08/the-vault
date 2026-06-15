@@ -19,6 +19,7 @@ const themeClasses: Record<EditorialImageTheme, string> = {
   "milestone-engagement": "editorial-ph-milestone-engagement",
   "milestone-legacy": "editorial-ph-milestone-legacy",
   "milestone-achievement": "editorial-ph-milestone-achievement",
+  "marriage-commitment": "editorial-ph-marriage-commitment",
 };
 
 interface EditorialImageProps {

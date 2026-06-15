@@ -2,12 +2,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/layout/section";
 import { routes } from "@/config/routes";
-import { editorialQuote } from "@/content/editorial";
 import { EditorialHero } from "@/components/editorial/EditorialHero";
-import {
-  EditorialQuoteBlock,
-  MilestoneStoriesSection,
-} from "@/components/editorial/MilestoneStories";
+import { HeroQuoteSpacer } from "@/components/editorial/HeroQuoteSpacer";
+import { MarriageCommitmentEditorial } from "@/components/editorial/MarriageCommitmentEditorial";
+import { MilestoneStoriesSection } from "@/components/editorial/MilestoneStories";
 import { VaultCollectionSection } from "@/components/editorial/VaultCollection";
 
 export default function HomePage() {
@@ -15,14 +13,13 @@ export default function HomePage() {
     <>
       <EditorialHero />
 
+      <HeroQuoteSpacer />
+
+      <MarriageCommitmentEditorial />
+
       <MilestoneStoriesSection />
 
       <VaultCollectionSection limit={3} showGalleryLink />
-
-      <EditorialQuoteBlock
-        text={editorialQuote.text}
-        attribution={editorialQuote.attribution}
-      />
 
       <Section className="pb-24 pt-8 md:pb-32">
         <Container size="narrow" className="text-center">

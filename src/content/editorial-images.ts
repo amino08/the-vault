@@ -24,7 +24,8 @@ export type EditorialImageTheme =
   | "collection-bespoke"
   | "milestone-engagement"
   | "milestone-legacy"
-  | "milestone-achievement";
+  | "milestone-achievement"
+  | "marriage-commitment";
 
 export interface EditorialImageAsset {
   id: string;
@@ -149,5 +150,14 @@ export const editorialImages = {
       alt: "A bespoke piece marking a personal transformation, displayed on velvet",
       theme: "milestone-achievement",
     },
+  },
+  /** Full-width homepage editorial — Marriage & Commitment */
+  marriageCommitment: {
+    id: "marriage-commitment-hero",
+    // TODO(asset): Add public/images/vault/marriage-commitment-hero.jpg
+    src: null,
+    alt: "A bespoke engagement ring at a private milestone moment — marriage and commitment",
+    theme: "marriage-commitment",
+    shootNote: "Full-width 21:9 crop, warm light, Enter Aevum palette, no stock feel",
   },
 } as const satisfies Record<string, EditorialImageAsset | Record<string, EditorialImageAsset>>;
