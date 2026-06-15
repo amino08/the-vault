@@ -312,13 +312,13 @@ export function RingConfigurator({
           </p>
         )}
 
-        <div className="grid items-start gap-6 lg:grid-cols-[7fr_3fr] xl:gap-8">
-          <div className="space-y-2 lg:sticky lg:top-20">
+        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[7fr_3fr] lg:items-start xl:gap-8">
+          <div className="contents lg:block lg:space-y-2 lg:sticky lg:top-20">
             <div>
               <p className="text-[10px] uppercase tracking-[0.28em] text-vault-gold">Atelier Preview</p>
               <p className="mt-0.5 font-serif text-lg text-vault-ivory">Live Configuration</p>
             </div>
-            <div className="relative aspect-[4/3] w-full overflow-hidden border border-vault-gold/15 bg-[#070707] shadow-[0_24px_48px_-24px_rgba(0,0,0,0.9),inset_0_0_0_1px_rgba(201,169,98,0.06)] max-lg:sticky max-lg:top-20 max-lg:z-10 lg:aspect-auto lg:min-h-[min(440px,48vh)] lg:max-h-[min(560px,58vh)]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden border border-vault-gold/15 bg-[#070707] shadow-[0_24px_48px_-24px_rgba(0,0,0,0.9),inset_0_0_0_1px_rgba(201,169,98,0.06)] max-lg:sticky max-lg:top-20 max-lg:z-30 max-lg:max-h-[min(320px,75vw)] max-lg:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.95)] max-lg:backdrop-blur-sm lg:aspect-auto lg:min-h-[min(440px,48vh)] lg:max-h-[min(560px,58vh)]">
               <RingPreview ref={previewRef} config={builder} className="absolute inset-0 h-full w-full" />
             </div>
             <div className="flex flex-col items-center gap-3 pt-1 sm:flex-row sm:justify-between">
