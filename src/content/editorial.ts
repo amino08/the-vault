@@ -142,6 +142,16 @@ export const createAtmosphere = {
 } as const;
 
 export const editorialQuote = {
+  preface: "From creation to meaning",
+  lines: ["We do not sell jewelry.", "We immortalize chapters."],
   text: "We do not sell jewelry. We immortalize chapters.",
   attribution: "The Vault by Enter Aevum",
+} as const;
+
+export const marriageCommitmentSection = {
+  eyebrow: "Marriage & Commitment",
+  title: "A vow made visible — crafted, not catalogued",
+  body: "An engagement is not a transaction. It is a promise given form — proportion, stone, and setting chosen to echo a relationship's particular language. Every commission begins with what the piece must carry forward.",
+  support:
+    "Legacy, milestones, and custom creation converge here. The Vault exists for moments that deserve permanence — pieces built around your story, not pulled from a shelf.",
 } as const;

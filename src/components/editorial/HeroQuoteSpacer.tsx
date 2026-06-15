@@ -1,21 +1,35 @@
 import { editorialQuote } from "@/content/editorial";
 
-/** Spacer between hero and first editorial content — house voice only */
+/**
+ * Editorial manifesto — transition from configurator ("build") to meaning ("why").
+ */
 export function HeroQuoteSpacer() {
   return (
-    <section className="hero-quote-spacer" aria-label="House philosophy">
-      <div className="hero-quote-spacer-rule" aria-hidden />
-      <blockquote className="hero-quote-spacer-text">
-        <p className="font-serif text-2xl font-light italic leading-relaxed text-vault-forest md:text-3xl lg:text-4xl">
-          &ldquo;{editorialQuote.text}&rdquo;
-        </p>
-        {editorialQuote.attribution && (
-          <footer className="mt-6 text-[10px] uppercase tracking-[0.24em] text-vault-muted-light">
-            {editorialQuote.attribution}
-          </footer>
+    <section className="hero-quote-manifesto" aria-label="House philosophy">
+      <div className="hero-quote-manifesto-inner">
+        <div className="hero-quote-emblem" aria-hidden>
+          <span className="hero-quote-emblem-line" />
+          <span className="hero-quote-emblem-mark" />
+          <span className="hero-quote-emblem-line" />
+        </div>
+
+        {editorialQuote.preface && (
+          <p className="hero-quote-preface">{editorialQuote.preface}</p>
         )}
-      </blockquote>
-      <div className="hero-quote-spacer-rule" aria-hidden />
+
+        <blockquote className="hero-quote-manifesto-text">
+          <p className="hero-quote-lines">
+            {editorialQuote.lines.map((line) => (
+              <span key={line} className="hero-quote-line">
+                {line}
+              </span>
+            ))}
+          </p>
+          {editorialQuote.attribution && (
+            <footer className="hero-quote-attribution">{editorialQuote.attribution}</footer>
+          )}
+        </blockquote>
+      </div>
     </section>
   );
 }

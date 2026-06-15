@@ -1,17 +1,18 @@
 /**
- * Hero and editorial video paths — single registry for media URLs.
+ * Editorial video paths — single registry for media URLs.
  *
- * Primary hero asset:
+ * Marriage & Commitment campaign:
  *   public/videos/vault/video.mp4  → /videos/vault/video.mp4
- *
- * Legacy fallback (optional):
- *   public/videos/vault/video.mov
  */
 
 export const vaultVideos = {
+  marriageCommitment: {
+    mp4: "/videos/vault/video.mp4",
+    mov: "/videos/vault/video.mov",
+  },
+  /** @deprecated Use marriageCommitment — kept for reference */
   hero: {
     mp4: "/videos/vault/video.mp4",
     mov: "/videos/vault/video.mov",
-    poster: null as string | null,
   },
 } as const;
