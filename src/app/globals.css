@@ -22,6 +22,14 @@
     --input: 155 10% 14%;
     --ring: 43 44% 59%;
     --radius: 0.125rem;
+
+    /* Vault brand tokens — referenced here to avoid @apply JIT issues on Vercel */
+    --vault-black: #0a0c0b;
+    --vault-ivory: #f5f2ea;
+    --vault-cream: #f7f4ee;
+    --vault-gold: #c9a962;
+    --vault-forest: #1b2f28;
+    --vault-forest-deep: #121c18;
   }
 
   * {
@@ -33,7 +41,9 @@
   }
 
   body {
-    @apply bg-vault-black text-vault-ivory antialiased;
+    background-color: var(--vault-black);
+    color: var(--vault-ivory);
+    @apply antialiased;
     background-image: radial-gradient(
       ellipse 120% 80% at 50% -20%,
       rgba(27, 47, 40, 0.22),
@@ -42,25 +52,36 @@
   }
 
   ::selection {
-    @apply bg-vault-gold/30 text-vault-cream;
+    background-color: rgb(201 169 98 / 0.3);
+    color: var(--vault-cream);
   }
 }
 
 @layer components {
   .brand-section-alt {
-    @apply border-t border-vault-forest/15 bg-vault-forest/[0.06];
+    border-top: 1px solid rgb(27 47 40 / 0.15);
+    background-color: rgb(27 47 40 / 0.06);
   }
 
   .brand-panel {
-    @apply border border-vault-forest/20 bg-brand-panel;
+    border: 1px solid rgb(27 47 40 / 0.2);
+    background: linear-gradient(145deg, rgb(20 25 22 / 0.95) 0%, rgb(27 47 40 / 0.18) 100%);
   }
 
   .brand-eyebrow {
-    @apply text-xs uppercase tracking-luxury text-vault-gold;
+    @apply text-xs uppercase tracking-luxury;
+    color: var(--vault-gold);
   }
 
   .brand-rule {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-vault-gold/25 to-transparent;
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      rgb(201 169 98 / 0.25),
+      transparent
+    );
   }
 }
 
