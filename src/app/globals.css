@@ -379,7 +379,60 @@
 
   @media (min-width: 1024px) {
     .hero-editorial-copy {
-      padding-block: 2rem;
+      padding-block: 2.5rem;
+      padding-inline: 0.5rem;
+    }
+  }
+
+  .hero-headline {
+    font-family: var(--font-playfair), Georgia, serif;
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    color: var(--vault-ink);
+  }
+
+  .hero-secondary {
+    margin-top: 1.75rem;
+    max-width: 16rem;
+    font-family: var(--font-playfair), Georgia, serif;
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    font-weight: 300;
+    line-height: 1.35;
+    letter-spacing: 0.03em;
+    color: var(--vault-forest);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-secondary {
+      margin-top: 2.25rem;
+    }
+  }
+
+  .hero-caption {
+    margin-top: 2rem;
+    max-width: 12rem;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--vault-muted-light);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-caption {
+      margin-top: 2.75rem;
+    }
+  }
+
+  .hero-cta-wrap {
+    margin-top: 2.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-cta-wrap {
+      margin-top: 3.5rem;
     }
   }
 

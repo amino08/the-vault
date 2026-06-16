@@ -2,9 +2,10 @@ import type { EditorialImageAsset } from "@/content/editorial-images";
 import { editorialImages } from "@/content/editorial-images";
 
 export const editorialHero = {
-  headline: "Commissioned For Your Story.\nCrafted For Generations.",
-  subheadline:
-    "A private jewelry commission platform built around life's most meaningful chapters.",
+  headline: "The Vault.",
+  secondary: "Luxury With Your Own Touch.",
+  caption: "Designed around your story.",
+  cta: "Enter The Vault",
 } as const;
 
 export const vaultPurpose = {
