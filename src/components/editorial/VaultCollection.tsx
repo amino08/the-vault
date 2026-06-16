@@ -24,10 +24,10 @@ export function VaultCollectionSection({
   const pieces = limit ? vaultCollection.slice(0, limit) : vaultCollection;
 
   return (
-    <Section className={cn("brand-section-alt", className)} id="vault-collection">
-      <Container>
-        {showHeader && (
-          <div className="mb-14 text-center md:mb-20">
+    <Section className={cn("brand-section-alt overflow-hidden", className)} id="vault-collection">
+      {showHeader && (
+        <Container>
+          <div className="mb-10 text-center md:mb-14">
             <h2 className="font-serif text-3xl font-light text-vault-ink md:text-5xl">
               {homepageCollectionSection.title}
             </h2>
@@ -35,69 +35,47 @@ export function VaultCollectionSection({
               {homepageCollectionSection.description}
             </EditorialDescriptionBox>
           </div>
-        )}
+        </Container>
+      )}
 
-        <VaultCollectionEditorialGrid pieces={pieces} />
+      <VaultCollectionScrollStrip pieces={pieces} />
 
-        {showGalleryLink && (
-          <div className="mt-16 text-center md:mt-20">
+      {showGalleryLink && (
+        <Container>
+          <div className="mt-14 text-center md:mt-16">
             <Button variant="outline" asChild>
               <Link href={routes.gallery}>View the Full Collection</Link>
             </Button>
           </div>
-        )}
-      </Container>
+        </Container>
+      )}
     </Section>
   );
 }
 
-interface VaultCollectionEditorialGridProps {
+interface VaultCollectionScrollStripProps {
   pieces: CollectionPiece[];
   className?: string;
 }
 
-/** Luxury editorial layout: 2 + feature + 2 + wide feature */
-export function VaultCollectionEditorialGrid({
-  pieces,
-  className,
-}: VaultCollectionEditorialGridProps) {
-  const layoutSlots = [
-    "collection-slot-sm",
-    "collection-slot-sm",
-    "collection-slot-feature",
-    "collection-slot-sm",
-    "collection-slot-sm",
-    "collection-slot-wide",
-  ] as const;
-
+/** Homepage — horizontal editorial scroll with large imagery */
+export function VaultCollectionScrollStrip({ pieces, className }: VaultCollectionScrollStripProps) {
   return (
-    <div className={cn("collection-editorial-grid", className)}>
-      {pieces.map((piece, index) => {
-        const slot = layoutSlots[index] ?? "collection-slot-sm";
-        const isFeature = slot === "collection-slot-feature" || slot === "collection-slot-wide";
-
-        return (
-          <article key={piece.id} className={cn("editorial-collection-card group", slot)}>
-            <div className="editorial-collection-image">
+    <div className={cn("collection-scroll-bleed", className)}>
+      <div className="collection-scroll-strip" aria-label="Vault collection">
+        {pieces.map((piece) => (
+          <article key={piece.id} className="collection-scroll-item group">
+            <div className="collection-scroll-image">
               <EditorialImage
                 asset={piece.image}
-                sizes={isFeature ? "100vw" : "(max-width: 768px) 50vw, 33vw"}
-                aspectClassName={
-                  slot === "collection-slot-feature"
-                    ? "aspect-[21/9] min-h-[12rem] md:min-h-[18rem]"
-                    : slot === "collection-slot-wide"
-                      ? "aspect-[16/7] min-h-[10rem] md:min-h-[14rem]"
-                      : "aspect-[4/5]"
-                }
+                sizes="(max-width: 768px) 85vw, 42vw"
+                aspectClassName="aspect-[3/4] min-h-[24rem] md:min-h-[34rem] lg:min-h-[38rem]"
               />
             </div>
-            <div className="editorial-collection-meta">
-              <h3 className="font-serif text-xl text-vault-ink md:text-2xl">{piece.title}</h3>
-              <EditorialDescriptionBox>{piece.story}</EditorialDescriptionBox>
-            </div>
+            <h3 className="mt-5 font-serif text-xl text-vault-ink md:mt-6 md:text-2xl">{piece.title}</h3>
           </article>
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
 }
