@@ -1,6 +1,5 @@
 import { Container, Section } from "@/components/layout/section";
 import { homepageMilestoneSection, milestoneStories } from "@/content/editorial";
-import { EditorialDescriptionBox } from "@/components/editorial/EditorialDescriptionBox";
 import { EditorialImage } from "@/components/editorial/EditorialImage";
 
 export function MilestoneStoriesSection() {
@@ -11,9 +10,6 @@ export function MilestoneStoriesSection() {
           <h2 className="font-serif text-3xl font-light text-vault-ink md:text-5xl">
             {homepageMilestoneSection.title}
           </h2>
-          <EditorialDescriptionBox centered className="mx-auto">
-            {homepageMilestoneSection.description}
-          </EditorialDescriptionBox>
         </div>
 
         <div className="grid gap-16 md:grid-cols-3 md:gap-10 lg:gap-14">
@@ -25,7 +21,6 @@ export function MilestoneStoriesSection() {
                 aspectClassName="aspect-[3/4]"
               />
               <h3 className="mt-6 font-serif text-xl text-vault-ink md:text-2xl">{story.title}</h3>
-              <EditorialDescriptionBox>{story.description}</EditorialDescriptionBox>
             </article>
           ))}
         </div>
