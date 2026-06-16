@@ -6,16 +6,12 @@ import { HeroConfiguratorShowcase } from "@/components/editorial/HeroConfigurato
 
 export function EditorialHero() {
   return (
-    <section className="hero-editorial relative overflow-hidden pb-12 pt-16 md:pb-16 md:pt-20 lg:pb-20">
+    <section className="hero-editorial relative overflow-hidden pb-14 pt-12 md:pb-20 md:pt-16 lg:pb-24">
       <div className="absolute inset-0 bg-brand-radial-light" aria-hidden />
 
       <Container className="relative" size="wide">
-        <div className="hero-editorial-grid">
-          <div className="hero-editorial-showcase">
-            <HeroConfiguratorShowcase />
-          </div>
-
-          <div className="hero-editorial-copy">
+        <div className="hero-editorial-stack">
+          <div className="hero-editorial-intro">
             <h1 className="hero-headline">{editorialHero.headline}</h1>
             <p className="hero-secondary">{editorialHero.secondary}</p>
             <p className="hero-caption">{editorialHero.caption}</p>
@@ -24,6 +20,10 @@ export function EditorialHero() {
                 {editorialHero.cta}
               </Link>
             </div>
+          </div>
+
+          <div className="hero-editorial-showcase">
+            <HeroConfiguratorShowcase />
           </div>
         </div>
       </Container>

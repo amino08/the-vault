@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/section";
 import { marriageCommitmentSection } from "@/content/editorial";
+import { EditorialDescriptionBox } from "@/components/editorial/EditorialDescriptionBox";
 import { MarriageCommitmentVideo } from "@/components/editorial/MarriageCommitmentVideo";
 
 export function MarriageCommitmentEditorial() {
@@ -13,9 +14,9 @@ export function MarriageCommitmentEditorial() {
         <h2 className="font-serif text-3xl font-light text-vault-ink md:text-4xl">
           {marriageCommitmentSection.title}
         </h2>
-        <p className="mt-5 max-w-lg text-base leading-relaxed text-vault-muted">
-          {marriageCommitmentSection.body}
-        </p>
+        <EditorialDescriptionBox centered>
+          {marriageCommitmentSection.description}
+        </EditorialDescriptionBox>
       </Container>
     </section>
   );

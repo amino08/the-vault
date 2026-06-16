@@ -2,6 +2,7 @@ import { EditorialHero } from "@/components/editorial/EditorialHero";
 import { HeroQuoteSpacer } from "@/components/editorial/HeroQuoteSpacer";
 import { MarriageCommitmentEditorial } from "@/components/editorial/MarriageCommitmentEditorial";
 import { MilestoneStoriesSection } from "@/components/editorial/MilestoneStories";
+import { ProcessTeaserSection } from "@/components/editorial/ProcessTeaserSection";
 import { VaultCollectionSection } from "@/components/editorial/VaultCollection";
 
 export default function HomePage() {
@@ -11,7 +12,8 @@ export default function HomePage() {
       <HeroQuoteSpacer />
       <MarriageCommitmentEditorial />
       <MilestoneStoriesSection />
-      <VaultCollectionSection limit={3} showGalleryLink />
+      <ProcessTeaserSection />
+      <VaultCollectionSection limit={6} showGalleryLink />
     </>
   );
 }

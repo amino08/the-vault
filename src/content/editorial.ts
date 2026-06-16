@@ -111,22 +111,50 @@ export const vaultCollection: CollectionPiece[] = [
     story: "A sculptural center stone marking 100 pounds lost — the client's word, not ours, on the inside band.",
     image: editorialImages.collection.bespoke,
   },
+  {
+    id: "heirloom-band",
+    category: "Legacy",
+    title: "The Heirloom Band",
+    story: "A grandmother's stones reset for a new generation — same love, new life.",
+    image: editorialImages.collection.legacy,
+  },
 ];
 
 export const milestoneStories = [
   {
     title: "Marriage & commitment",
+    description: "Vows given form — proportion, stone, and setting chosen for a single relationship.",
     image: editorialImages.milestones.engagement,
   },
   {
     title: "Legacy & lineage",
+    description: "Crests reframed, heirlooms reimagined — pieces meant to be handed down.",
     image: editorialImages.milestones.legacy,
   },
   {
     title: "Achievement & transformation",
+    description: "Milestones earned in silence, made permanent in gold and stone.",
     image: editorialImages.milestones.achievement,
   },
 ] as const;
+
+export const homepageMilestoneSection = {
+  title: "Stories Worth Keeping",
+  description:
+    "Engagement, legacy, and transformation — each commission shaped around a singular moment.",
+} as const;
+
+export const homepageProcessSection = {
+  title: "The Commission Path",
+  description:
+    "A private journey from story to finished piece — consultation, design, craftsmanship, and delivery.",
+} as const;
+
+export const homepageCollectionSection = {
+  title: "The Vault Collection",
+  description:
+    "Completed commissions — engagement, legacy, signet, and bespoke creations from private conversations.",
+} as const;
 
 export const createAtmosphere = {
   eyebrow: "Private Atelier",
@@ -141,6 +169,6 @@ export const editorialQuote = {
 } as const;
 
 export const marriageCommitmentSection = {
-  title: "A vow made visible",
-  body: "Crafted for the moments that define a life — not chosen from a catalog.",
+  title: "Marriage & Commitment",
+  description: "Crafted for the moments that define a life — not chosen from a catalog.",
 } as const;
