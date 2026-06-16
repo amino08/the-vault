@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { cn } from "@/lib/utils";
 import { vaultVideos } from "@/content/editorial-videos";
 
 /**
@@ -17,9 +16,7 @@ export function MarriageCommitmentVideo() {
   if (failed) {
     return (
       <div className="marriage-commitment-video-fallback" aria-hidden>
-        <p className="text-xs uppercase tracking-[0.2em] text-vault-muted-light">
-          Video unavailable
-        </p>
+        <span className="sr-only">Video unavailable</span>
       </div>
     );
   }
@@ -27,7 +24,7 @@ export function MarriageCommitmentVideo() {
   return (
     <div className="marriage-commitment-video">
       <video
-        className={cn("marriage-commitment-video-media")}
+        className="marriage-commitment-video-media"
         autoPlay
         muted
         loop

@@ -1,10 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
-import { routes } from "@/config/routes";
 import { METAL_PRESETS, STONE_PRESETS } from "@/features/builder/constants";
 import {
   BAND_STYLE_PRESETS,
@@ -26,14 +24,11 @@ import {
 function CanvasFallback() {
   return (
     <div className="flex h-full w-full items-center justify-center bg-[#070707]">
-      <p className="text-[10px] uppercase tracking-[0.28em] text-vault-pearl/35">
-        Preparing atelier view
-      </p>
+      <span className="sr-only">Preparing atelier view</span>
     </div>
   );
 }
 
-/** Same safe dynamic pattern as RingConfigurator — single client boundary, no nested imports. */
 const RingPreview = dynamic(
   () => import("@/features/builder/components/RingPreview").then((mod) => mod.default),
   {
@@ -43,55 +38,45 @@ const RingPreview = dynamic(
 );
 
 const HERO_STONES: StoneId[] = ["diamond", "sapphire", "ruby", "emerald"];
-const HERO_BANDS: BandStyleId[] = [
-  "classic_solitaire",
-  "cathedral",
-  "pave_band",
-  "half_eternity",
-];
+const HERO_BANDS: BandStyleId[] = ["classic_solitaire", "cathedral", "pave_band"];
 const HERO_HALOS: HaloStyleId[] = ["none", "classic", "hidden"];
 const HERO_PRONGS: ProngStyleId[] = ["four_prong", "six_prong", "bezel"];
 const HERO_SIDE_STONES: SideStoneStyleId[] = ["none", "two_side_stones", "three_stone_ring"];
 
-interface CueRowProps<T extends string> {
-  label: string;
-  value: T;
-  options: { id: T; label: string; swatch?: string }[];
-  onChange: (id: T) => void;
-}
-
-function CueRow<T extends string>({ label, value, options, onChange }: CueRowProps<T>) {
+function CueChip<T extends string>({
+  option,
+  active,
+  onSelect,
+}: {
+  option: { id: T; label: string; swatch?: string };
+  active: boolean;
+  onSelect: (id: T) => void;
+}) {
   return (
-    <div className="space-y-2">
-      <p className="text-[10px] uppercase tracking-[0.22em] text-vault-muted-light">{label}</p>
-      <div className="flex flex-wrap gap-1.5">
-        {options.map((option) => {
-          const active = value === option.id;
-          return (
-            <button
-              key={option.id}
-              type="button"
-              onClick={() => onChange(option.id)}
-              className={cn(
-                "inline-flex items-center gap-1.5 border px-2.5 py-1.5 text-[11px] transition-colors",
-                active
-                  ? "border-vault-forest/30 bg-vault-forest/10 text-vault-ink"
-                  : "border-vault-forest/10 bg-vault-ivory text-vault-muted hover:border-vault-gold/35 hover:text-vault-ink",
-              )}
-            >
-              {option.swatch && (
-                <span
-                  className="h-2.5 w-2.5 shrink-0 rounded-full border border-vault-forest/15"
-                  style={{ backgroundColor: option.swatch }}
-                  aria-hidden
-                />
-              )}
-              {option.label}
-            </button>
-          );
-        })}
-      </div>
-    </div>
+    <button
+      type="button"
+      aria-pressed={active}
+      aria-label={option.label}
+      title={option.label}
+      onClick={() => onSelect(option.id)}
+      className={cn(
+        "inline-flex h-8 min-w-8 items-center justify-center border px-2 transition-colors",
+        option.swatch ? "gap-1.5" : "px-2.5 text-[10px] tracking-wide",
+        active
+          ? "border-vault-gold/50 bg-vault-gold/10 text-vault-ink"
+          : "border-vault-forest/10 bg-vault-ivory/80 text-vault-muted hover:border-vault-gold/35",
+      )}
+    >
+      {option.swatch ? (
+        <span
+          className="h-3 w-3 shrink-0 rounded-full border border-vault-forest/10"
+          style={{ backgroundColor: option.swatch }}
+          aria-hidden
+        />
+      ) : (
+        <span className="truncate">{option.label}</span>
+      )}
+    </button>
   );
 }
 
@@ -116,12 +101,12 @@ export function HeroConfiguratorShowcase() {
 
   const bandOptions = BAND_STYLE_PRESETS.filter((b) => HERO_BANDS.includes(b.id)).map((b) => ({
     id: b.id,
-    label: b.label,
+    label: b.label.split(" ")[0],
   }));
 
   const haloOptions = HALO_STYLE_PRESETS.filter((h) => HERO_HALOS.includes(h.id)).map((h) => ({
     id: h.id,
-    label: h.label,
+    label: h.label.replace(" Halo", "").replace("No", "None"),
   }));
 
   const prongOptions = PRONG_STYLE_PRESETS.filter((p) => HERO_PRONGS.includes(p.id)).map((p) => ({
@@ -131,42 +116,43 @@ export function HeroConfiguratorShowcase() {
 
   const sideStoneOptions = SIDE_STONE_STYLE_PRESETS.filter((s) =>
     HERO_SIDE_STONES.includes(s.id),
-  ).map((s) => ({ id: s.id, label: s.label }));
+  ).map((s) => ({ id: s.id, label: s.label.split(" ")[0] }));
 
   return (
     <div className="hero-showroom">
-      <div className="hero-showroom-header">
-        <p className="brand-eyebrow-gold text-[10px] tracking-[0.28em]">Live Atelier Preview</p>
-        <p className="mt-1 text-xs text-vault-muted">
-          Customize metal, stones, and setting — see your commission take shape
-        </p>
-      </div>
-
       <div className="hero-showroom-stage">
         <RingPreview config={config} className="absolute inset-0 h-full w-full" />
-        <div className="hero-showroom-live-badge" aria-hidden>
-          Live
+      </div>
+
+      <div className="hero-showroom-cues" aria-label="Customize your ring">
+        <div className="hero-showroom-cue-row">
+          {metalOptions.map((o) => (
+            <CueChip key={o.id} option={o} active={config.metal === o.id} onSelect={(id) => patch({ metal: id })} />
+          ))}
+          {stoneOptions.map((o) => (
+            <CueChip key={o.id} option={o} active={config.stone === o.id} onSelect={(id) => patch({ stone: id })} />
+          ))}
+        </div>
+        <div className="hero-showroom-cue-row">
+          {haloOptions.map((o) => (
+            <CueChip key={o.id} option={o} active={config.haloStyle === o.id} onSelect={(id) => patch({ haloStyle: id })} />
+          ))}
+          {bandOptions.map((o) => (
+            <CueChip key={o.id} option={o} active={config.bandStyle === o.id} onSelect={(id) => patch({ bandStyle: id })} />
+          ))}
+          {prongOptions.map((o) => (
+            <CueChip key={o.id} option={o} active={config.prongStyle === o.id} onSelect={(id) => patch({ prongStyle: id })} />
+          ))}
+          {sideStoneOptions.map((o) => (
+            <CueChip
+              key={o.id}
+              option={o}
+              active={config.sideStoneStyle === o.id}
+              onSelect={(id) => patch({ sideStoneStyle: id })}
+            />
+          ))}
         </div>
       </div>
-
-      <div className="hero-showroom-cues">
-        <CueRow label="Metal" value={config.metal} options={metalOptions} onChange={(id) => patch({ metal: id })} />
-        <CueRow label="Center Stone" value={config.stone} options={stoneOptions} onChange={(id) => patch({ stone: id })} />
-        <CueRow label="Halo" value={config.haloStyle} options={haloOptions} onChange={(id) => patch({ haloStyle: id })} />
-        <CueRow
-          label="Side Stones"
-          value={config.sideStoneStyle}
-          options={sideStoneOptions}
-          onChange={(id) => patch({ sideStoneStyle: id })}
-        />
-        <CueRow label="Band Style" value={config.bandStyle} options={bandOptions} onChange={(id) => patch({ bandStyle: id })} />
-        <CueRow label="Prongs" value={config.prongStyle} options={prongOptions} onChange={(id) => patch({ prongStyle: id })} />
-      </div>
-
-      <Link href={routes.create} className="hero-showroom-link">
-        Open full configurator
-        <span aria-hidden>→</span>
-      </Link>
     </div>
   );
 }

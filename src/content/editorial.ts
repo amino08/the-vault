@@ -2,18 +2,13 @@ import type { EditorialImageAsset } from "@/content/editorial-images";
 import { editorialImages } from "@/content/editorial-images";
 
 export const editorialHero = {
-  eyebrow: "Enter Aevum · Custom Commission Platform",
   headline: "Commissioned For Your Story.\nCrafted For Generations.",
   subheadline:
-    "Design a one-of-a-kind piece built around your milestones, relationships, achievements, and legacy.",
-  supportCopy:
-    "Configure metal, stones, halo, band, and prongs in real time — then begin your private commission when the story is clear. Nothing here exists until you create it.",
+    "A private jewelry commission platform built around life's most meaningful chapters.",
 } as const;
 
 export const vaultPurpose = {
-  eyebrow: "Why The Vault exists",
   title: "Meaningful jewelry for moments that deserve permanence",
-  body: "Enter Aevum created The Vault for clients who want more than a purchase — they want a piece that holds weight. Every commission is private, narrative-led, and built to outlast the moment it celebrates.",
 } as const;
 
 export type ProcessStage = {
@@ -120,17 +115,14 @@ export const vaultCollection: CollectionPiece[] = [
 export const milestoneStories = [
   {
     title: "Marriage & commitment",
-    body: "An engagement is not an transaction. It is a vow made visible — proportion, stone, and setting chosen to echo a relationship's particular language.",
     image: editorialImages.milestones.engagement,
   },
   {
     title: "Legacy & lineage",
-    body: "Some commissions reframe a family crest. Others translate a grandmother's ring into a form a granddaughter will actually wear. The thread continues.",
     image: editorialImages.milestones.legacy,
   },
   {
     title: "Achievement & transformation",
-    body: "Weight lost, companies built, battles won quietly — milestones that deserve more than a certificate. A piece that says: this happened, and it mattered.",
     image: editorialImages.milestones.achievement,
   },
 ] as const;
@@ -142,16 +134,12 @@ export const createAtmosphere = {
 } as const;
 
 export const editorialQuote = {
-  preface: "From creation to meaning",
   lines: ["We do not sell jewelry.", "We immortalize chapters."],
   text: "We do not sell jewelry. We immortalize chapters.",
   attribution: "The Vault by Enter Aevum",
 } as const;
 
 export const marriageCommitmentSection = {
-  eyebrow: "Marriage & Commitment",
-  title: "A vow made visible — crafted, not catalogued",
-  body: "An engagement is not a transaction. It is a promise given form — proportion, stone, and setting chosen to echo a relationship's particular language. Every commission begins with what the piece must carry forward.",
-  support:
-    "Legacy, milestones, and custom creation converge here. The Vault exists for moments that deserve permanence — pieces built around your story, not pulled from a shelf.",
+  title: "A vow made visible",
+  body: "Crafted for the moments that define a life — not chosen from a catalog.",
 } as const;

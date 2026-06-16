@@ -1,8 +1,6 @@
 import { editorialQuote } from "@/content/editorial";
 
-/**
- * Editorial manifesto — transition from configurator ("build") to meaning ("why").
- */
+/** Editorial manifesto — transition from creation to meaning */
 export function HeroQuoteSpacer() {
   return (
     <section className="hero-quote-manifesto" aria-label="House philosophy">
@@ -12,10 +10,6 @@ export function HeroQuoteSpacer() {
           <span className="hero-quote-emblem-mark" />
           <span className="hero-quote-emblem-line" />
         </div>
-
-        {editorialQuote.preface && (
-          <p className="hero-quote-preface">{editorialQuote.preface}</p>
-        )}
 
         <blockquote className="hero-quote-manifesto-text">
           <p className="hero-quote-lines">

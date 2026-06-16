@@ -8,38 +8,31 @@ export function EditorialHero() {
   const headlineLines = editorialHero.headline.split("\n");
 
   return (
-    <section className="hero-editorial relative overflow-hidden pb-10 pt-16 md:pb-14 md:pt-20">
+    <section className="hero-editorial relative overflow-hidden pb-12 pt-16 md:pb-16 md:pt-20 lg:pb-20">
       <div className="absolute inset-0 bg-brand-radial-light" aria-hidden />
 
-      <Container className="relative">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <div className="order-2 space-y-7 py-4 lg:order-1 lg:py-12 xl:py-16">
-            <p className="brand-eyebrow">{editorialHero.eyebrow}</p>
-            <h1 className="font-serif text-4xl font-light leading-[1.1] tracking-wide text-balance text-vault-ink sm:text-5xl md:text-6xl xl:text-[4.25rem]">
+      <Container className="relative" size="wide">
+        <div className="hero-editorial-grid">
+          <div className="hero-editorial-showcase">
+            <HeroConfiguratorShowcase />
+          </div>
+
+          <div className="hero-editorial-copy">
+            <h1 className="font-serif text-4xl font-light leading-[1.08] tracking-wide text-balance text-vault-ink sm:text-5xl lg:text-[3.5rem] xl:text-6xl">
               {headlineLines.map((line, i) => (
                 <span key={line} className={i > 0 ? "block text-vault-forest" : "block"}>
                   {line}
                 </span>
               ))}
             </h1>
-            <p className="max-w-xl text-lg leading-relaxed text-vault-muted">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-vault-muted lg:text-lg">
               {editorialHero.subheadline}
             </p>
-            <p className="max-w-lg text-sm leading-relaxed text-vault-muted-light">
-              {editorialHero.supportCopy}
-            </p>
-            <div className="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center">
+            <div className="mt-10">
               <Link href={routes.create} className="hero-cta hero-cta-primary">
                 Begin Commission
               </Link>
-              <Link href={routes.process} className="hero-cta hero-cta-secondary">
-                Explore The Process
-              </Link>
             </div>
-          </div>
-
-          <div className="order-1 lg:order-2">
-            <HeroConfiguratorShowcase />
           </div>
         </div>
       </Container>

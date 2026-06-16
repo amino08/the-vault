@@ -28,15 +28,10 @@ export function VaultCollectionSection({
     <Section className={cn("brand-section-alt", className)} id="vault-collection">
       <Container>
         {showHeader && (
-          <div className="mb-14 max-w-2xl md:mb-20">
-            <p className="brand-eyebrow">The Vault Collection</p>
-            <h2 className="mt-4 font-serif text-3xl font-light text-vault-ink md:text-5xl">
-              Commissions that carry stories
+          <div className="mb-14 md:mb-20">
+            <h2 className="font-serif text-3xl font-light text-vault-ink md:text-5xl">
+              The Vault Collection
             </h2>
-            <p className="mt-5 body-editorial">
-              A curated selection of completed work — engagement, legacy, signet, and bespoke
-              creations. Each piece began as a private conversation.
-            </p>
           </div>
         )}
 
@@ -84,11 +79,7 @@ export function VaultCollectionGrid({ pieces, className }: VaultCollectionGridPr
             <div className="editorial-collection-overlay" aria-hidden />
           </div>
           <div className="editorial-collection-meta">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-vault-gold">
-              {piece.category}
-            </p>
-            <h3 className="mt-2 font-serif text-xl text-vault-ink md:text-2xl">{piece.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-vault-muted">{piece.story}</p>
+            <h3 className="font-serif text-xl text-vault-ink md:text-2xl">{piece.title}</h3>
           </div>
         </article>
       ))}
